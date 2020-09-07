@@ -14,6 +14,15 @@ const formatNumber = n => {
   return n[1] ? n : '0' + n
 }
 
+// 显示toast
+const toast = (title, icon = 'none') => {
+  wx.showToast({
+    title: title,
+    icon: icon
+  })
+}
+
 module.exports = {
-  formatTime: formatTime
+  formatTime: formatTime,
+  toast: toast
 }

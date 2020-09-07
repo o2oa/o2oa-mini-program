@@ -1,0 +1,4 @@
+<!--login.wxml-->
+<view class="container">
+  <text class="user-motto">Login</text>
+</view>
