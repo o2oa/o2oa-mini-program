@@ -1,6 +1,7 @@
 <!--login.wxml-->
-
-<image src="/assets/img/login_logo.png" mode="aspectFit" class="head-img"/>
-<input class="{{nameFocus?'input-active':''}}" placeholder="用户名" maxlength="20" focus="true" bindfocus="nameBindfocus" bindinput="inputName"></input>
-<input class="{{passwordFocus?'input-active':''}}" placeholder="密码" password="true" maxlength="20" bindfocus="passwordBindfocus" bindinput="inputPassword"></input>
-<view class="login" bindtap="login" hover-class="hover" hover-start-time="0" hover-stay-time="100">登录</view>
+<view class="login-page" wx:if="{{isShowLogin}}">
+  <image src="/assets/img/login_logo.png" mode="aspectFit" class="head-img"/>
+  <input class="{{nameFocus?'input-active':''}}" placeholder="用户名" maxlength="20" focus="true" bindfocus="nameBindfocus" bindinput="inputName"></input>
+  <input class="{{passwordFocus?'input-active':''}}" placeholder="密码" password="true" maxlength="20" bindfocus="passwordBindfocus" bindinput="inputPassword"></input>
+  <view class="login" bindtap="login" hover-class="hover" hover-start-time="0" hover-stay-time="100">登录</view>
+</view>

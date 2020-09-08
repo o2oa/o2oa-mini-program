@@ -12,7 +12,8 @@
   border-bottom: 1rpx #fb4747 solid;
 }
 
-page {
+.login-page {
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;

@@ -1,21 +1,133 @@
 /**index.wxss**/
-.userinfo {
+.top {
+  position: relative;
+}
+.banner-default-img {
+  height: 50vw;
+  width: 100vw;
+}
+.banner {
+  height: 50vw;
+}
+
+.banner image {
+  width: 100%;
+  height: 100%;
+}
+
+.banner .title {
+  height: 60rpx;
+  width: 100%;
+  line-height: 60rpx;
+  padding-left: 20rpx;
+  background: rgba(0, 0, 0, 0.4);
+  position: absolute;
+  bottom: 0;
+  color: white;
+  font-size: 28rpx;
+}
+
+.indicator {
+  height: 60rpx;
+  line-height: 60rpx;
+  color: white;
+  font-size: 24rpx;
+  position: absolute;
+  bottom: 0;
+  right: 20rpx;
+}
+
+.app-list {
+  display: flex;
+  flex-direction:row;
+  margin: 10rpx 24rpx;
+  justify-content:space-between;
+}
+.app-list .item {
+  text-align:center;
+  margin:5px 10px; 
   display: flex;
   flex-direction: column;
-  align-items: center;
+  justify-content: center;
+}
+.app-list .item image {
+  width: 84rpx;
+  height: 84rpx;
+  margin-bottom: 20rpx;
+}
+.app-list .item text {
+  font-size: 24rpx;
+  color: #2c2c2c;
+}
+.divider {
+  background-color:#f1efef;
+  height: 20rpx;
+  width: 100%;
 }
 
-.userinfo-avatar {
-  width: 128rpx;
-  height: 128rpx;
-  margin: 20rpx;
-  border-radius: 50%;
+.tab-category {
+  height: 80rpx;
+  margin-left: 120rpx;
+  margin-right: 120rpx;
+  display: flex;
+  flex-direction:row;
+  justify-content:space-between;
+  color: #333333;
+  border: 0;
+}
+.tab-category .active {
+  border-bottom:1rpx solid #fb4747;
+  color: #fb4747;
+}
+.news {
+  height: 80rpx;
+  width: 100%;
+  text-align: center;
+}
+.tasks {
+  height: 80rpx;
+  width: 100%;
+  text-align: center;
+} 
+.news text, .tasks text {
+  font-size: 28rpx;
+  line-height: 80rpx;
 }
 
-.userinfo-nickname {
-  color: #aaa;
+.article {
+  margin: 0rpx 24rpx;
+  padding: 20rpx;
+  height: 150rpx;
+  box-sizing: border-box;
+  position: relative;
+  border-bottom: 1rpx #cdcdcd solid;
 }
 
-.usermotto {
-  margin-top: 200px;
+.article .title {
+  font-size: 28rpx;
+  color: #696969;
+  word-wrap: break-word;
+  white-space: normal !important;
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  position: absolute;
+  bottom: 20rpx;
+  margin-left: 10rpx;
+}
+.article .date {
+  font-size: 24rpx;
+  color: #bfbfbf;
+  position: absolute;
+  top: 20rpx;
+  right: 20rpx;
+}
+.article .type {
+  font-size: 24rpx;
+  font-weight: bold;
+  color: #2c2c2c;
+  padding: 2rpx 5rpx;
+  margin-left: 10rpx;
 }

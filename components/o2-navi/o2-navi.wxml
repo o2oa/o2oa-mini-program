@@ -1,0 +1,9 @@
+<page-meta>
+  <navigation-bar
+    title="{{title}}"
+    front-color="#ffffff"
+    background-color="#fb4747"
+    color-animation-duration="300"
+    color-animation-timing-func="easeIn"
+  />
+</page-meta>

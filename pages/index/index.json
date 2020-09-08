@@ -1,3 +1,5 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "o2-navi": "../../components/o2-navi/o2-navi"
+  }
 }
