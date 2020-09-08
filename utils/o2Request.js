@@ -82,8 +82,21 @@ function o2oaCenterUrl() {
 }
 
 //认证模块
-function o2oaOrganizationAuthentication() {
+function o2oaOrganizationAuthenticationBaseUrl() {
     return getO2AssembleUrl('x_organization_assemble_authentication');
+}
+
+//cms模块
+function o2oaCmsServiceBaseUrl() {
+  return getO2AssembleUrl('x_cms_assemble_control');
+}
+//热点图片模块
+function o2oaHotPicServiceBaseUrl() {
+  return getO2AssembleUrl('x_hotpic_assemble_control');
+}
+//文件管理模块
+function o2oaFileServiceBaseUrl() {
+  return getO2AssembleUrl('x_file_assemble_control');
 }
 
 // get请求
@@ -111,7 +124,10 @@ module.exports = {
   post: post,
   put: put,
   delete: deleteReq,
-  o2oaOrganizationAuthentication: o2oaOrganizationAuthentication,
+  o2oaOrganizationAuthenticationBaseUrl: o2oaOrganizationAuthenticationBaseUrl,
   o2oaCenterUrl: o2oaCenterUrl,
-  setDistribute: setDistribute
+  setDistribute: setDistribute,
+  o2oaCmsServiceBaseUrl: o2oaCmsServiceBaseUrl,
+  o2oaHotPicServiceBaseUrl: o2oaHotPicServiceBaseUrl,
+  o2oaFileServiceBaseUrl: o2oaFileServiceBaseUrl
 }
