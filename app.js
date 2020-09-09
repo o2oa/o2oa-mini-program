@@ -27,10 +27,10 @@ App({
   globalData: {
     userInfo: null,
     o2oa: {
-      centerHost: "sample.o2oa.net",
+      centerHost: "dd.o2oa.net",
       centerContext: "/x_program_center",
-      centerPort: 40030,
-      httpProtocol: "https"
+      centerPort: 20030,
+      httpProtocol: "http"
     },
     naviInfo: {
       naviHeight: 0,

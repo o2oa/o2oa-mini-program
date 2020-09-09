@@ -56,16 +56,12 @@ function request(method, url, param, isShowLoading) {
 
 //设置应用地址到存储中
 function setDistribute(distribute) {
+  wx.removeStorageSync('webServer');
+  wx.removeStorageSync('assembles');
   var webServer = distribute.webServer || {}
-  wx.setStorage({
-    key: 'webServer',
-    data: webServer,
-  });
+  wx.setStorageSync('webServer', webServer);
   var assembles = distribute.assembles || {}
-  wx.setStorage({
-    key: 'assembles',
-    data: assembles,
-  });
+  wx.setStorageSync('assembles', assembles);
 }
 
 // 获取模块的baseUrl
@@ -74,6 +70,11 @@ function getO2AssembleUrl(contextName) {
   return  app.globalData.o2oa.httpProtocol + "://" + assemble["host"] + ":" + assemble["port"]+ assemble["context"];
 }
 
+//web服务器根地址 如 https://sample.o2oa.net:443
+function getO2WebBaseUrl() {
+  var webServer = wx.getStorageSync('webServer');
+  return app.globalData.o2oa.httpProtocol + "://" + webServer["host"] + ":" + webServer["port"];
+}
 
 
 // 中心服务器获取
@@ -85,7 +86,6 @@ function o2oaCenterUrl() {
 function o2oaOrganizationAuthenticationBaseUrl() {
     return getO2AssembleUrl('x_organization_assemble_authentication');
 }
-
 //cms模块
 function o2oaCmsServiceBaseUrl() {
   return getO2AssembleUrl('x_cms_assemble_control');
@@ -97,6 +97,10 @@ function o2oaHotPicServiceBaseUrl() {
 //文件管理模块
 function o2oaFileServiceBaseUrl() {
   return getO2AssembleUrl('x_file_assemble_control');
+}
+//流程模块
+function o2oaProcessServiceBaseUrl() {
+  return getO2AssembleUrl('x_processplatform_assemble_surface');
 }
 
 // get请求
@@ -127,7 +131,9 @@ module.exports = {
   o2oaOrganizationAuthenticationBaseUrl: o2oaOrganizationAuthenticationBaseUrl,
   o2oaCenterUrl: o2oaCenterUrl,
   setDistribute: setDistribute,
+  getO2WebBaseUrl: getO2WebBaseUrl,
   o2oaCmsServiceBaseUrl: o2oaCmsServiceBaseUrl,
   o2oaHotPicServiceBaseUrl: o2oaHotPicServiceBaseUrl,
-  o2oaFileServiceBaseUrl: o2oaFileServiceBaseUrl
+  o2oaFileServiceBaseUrl: o2oaFileServiceBaseUrl,
+  o2oaProcessServiceBaseUrl: o2oaProcessServiceBaseUrl
 }

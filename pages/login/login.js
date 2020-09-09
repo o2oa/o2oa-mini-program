@@ -45,6 +45,7 @@ Page({
         }
       }).catch(err => {
         //已经过期？
+        wx.removeStorageSync('who');
         this.setData({
           isShowLogin: true
          });

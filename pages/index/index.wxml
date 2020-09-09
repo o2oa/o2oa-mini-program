@@ -4,7 +4,7 @@
 <view class="top"  wx:if="{{bannerList.length > 0}}">
   <swiper class="banner" autoplay="true" interval="3000" duration="500" bindchange="swiperChange">
     <swiper-item wx:for="{{bannerList}}" wx:key="index">
-      <view class="banner" bindtap="bindTapHotNews" data-info="{{item.infoId}}" data-application="{{item.application}}">
+      <view class="banner" bindtap="bindTapHotNews" data-index="{{index}}" data-info="{{item.infoId}}" data-application="{{item.application}}">
         <image mode="scaleToFill" src="{{item.url}}"></image>
         <view class="title">{{item.title}}</view>
       </view>
@@ -39,16 +39,16 @@
 <view class="divider" ></view>
 
 <view class="tab-category">
-  <view class="news {{currentTab == 'news' ? 'active' : ''}}">
+  <view class="news {{currentTab == 'news' ? 'active' : ''}}" bindtap="bindTapInfoCenter">
     <text>信息中心</text>
   </view>
-  <view class="tasks {{currentTab == 'tasks' ? 'active' : ''}}">
+  <view class="tasks {{currentTab == 'tasks' ? 'active' : ''}}" bindtap="bindTapTaskInfoCenter">
     <text>办公中心</text>
   </view>
 </view>
 <!--任务列表 新闻列表-->
 <block>
-  <view class="article" wx:for="{{articleList}}" wx:key="index" bindtap="bindTapArticle" data-id="{{item.id}}" data-tag="{{item.tag}}" hover-class="item-hover" hover-start-time="0" hover-stay-time="200">
+  <view class="article" wx:for="{{articleList}}" wx:key="index" bindtap="bindTapArticle" data-id="{{item.id}}" data-index="{{index}}" data-tag="{{item.tag}}" hover-class="item-hover" hover-start-time="0" hover-stay-time="200">
     <text class="type">{{item.type}}</text>
     <text class="date">{{item.date}}</text>
     <text class="title">{{item.title}}</text>

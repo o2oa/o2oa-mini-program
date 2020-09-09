@@ -1,0 +1,3 @@
+<!--pages/progress/work-web.wxml-->
+<o2-navi title="{{navTitle}}" ></o2-navi>
+<web-view wx:if="{{workUrl != ''}}" src="{{workUrl}}" ></web-view>

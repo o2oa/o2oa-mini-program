@@ -1,9 +1,7 @@
 //index.js
 //获取应用实例
-const app = getApp();
-const util = require('../../utils/util.js');
+
 const api = require('../../utils/o2Api.js');
-const o2Request = require('../../utils/o2Request.js');
 
 const firstId = '(0)';
 const defaultPageSize = 15;
@@ -45,9 +43,50 @@ Page({
     if (this.data.currentTab == 'news') {
       this.loadNews(isRefresh);
     }else if (this.data.currentTab == 'tasks') {
-
+      this.loadTasks(isRefresh);
     }
   },
+  //查询办公中心数据
+  loadTasks: function(isRefresh) {
+    var lastId = this.data.lastId;
+    if (isRefresh) {
+      this.data.lastId = firstId;
+      lastId = firstId;
+    }
+    api.taskList(lastId, defaultPageSize).then(list => {
+      if (isRefresh) {
+        this.data.articleList = [];
+      }
+      if (list && list.length > 0) {
+        var taskList = [];
+        list.forEach(function(v) {
+          var obj = {
+            id: v.work, //work id 
+            title: v.title == '' ? '无标题' : v.title,
+            type: '【'+v.processName+'】',
+            date: v.startTime.length > 9 ? v.startTime.substring(0, 10) : v.startTime,
+            tag: 'tasks'
+          };
+          taskList.push(obj);
+        });
+        this.data.articleList.push(...taskList);
+        var lastId = list[list.length-1].id;
+        this.setData({
+          articleList: this.data.articleList,
+          lastId: lastId
+        });
+      }else {
+        this.setData({
+          articleList: this.data.articleList
+        });
+      }
+      wx.stopPullDownRefresh();
+    }).catch(err => {
+      api.o2Error(err);
+      wx.stopPullDownRefresh();
+    })
+  },
+  //查询信息中心数据
   loadNews: function(isRefresh) {
     let param = {
       orderField: '',
@@ -96,17 +135,50 @@ Page({
       swiperIndex: event.detail.current
     })
   },
+
+
   bindTapHotNews: function(event) {
-    let infoId = event.currentTarget.dataset.info;
-    let application = event.currentTarget.dataset.application;
-    console.log('打开图片新闻 infoId:', infoId, 'app:', application);
+    let index = event.currentTarget.dataset.index;
+    let data = this.data.bannerList[index];
+    if (data.application == 'BBS') { //论坛
+
+    }else if (data.application == 'CMS') { //cms
+      wx.navigateTo({
+        url: '../cms/cms-web?id=' + data.infoId + '&title=' + encodeURIComponent(data.title)
+      });
+    }
   },
   bindTapArticle: function(event) {
-    let id = event.currentTarget.dataset.id;
-    let tag = event.currentTarget.dataset.tag;
-    console.log('打开 新闻 id:', id , 'tag:', tag);
+    let index = event.currentTarget.dataset.index;
+    let data = this.data.articleList[index];
+    if (data.tag == 'news') { //cms
+      wx.navigateTo({
+        url: '../cms/cms-web?id=' + data.id + '&title=' + encodeURIComponent(data.title)
+      });
+    }else if (data.tag == 'tasks') { //待办
+      wx.navigateTo({
+        url: '../progress/work-web?work='  + data.id + '&title=' + encodeURIComponent(data.title)
+      });
+    }
   },
-
+  //点击信息中心
+  bindTapInfoCenter: function(event) {
+    if (this.data.currentTab == 'tasks') {
+      this.setData({
+        currentTab: 'news'
+      });
+      this.loadArticleList(true);
+    }
+  },
+  //点击办公中心
+  bindTapTaskInfoCenter: function(event) {
+    if (this.data.currentTab == 'news') {
+      this.setData({
+        currentTab: 'tasks'
+      });
+      this.loadArticleList(true);
+    }
+  },
    /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
