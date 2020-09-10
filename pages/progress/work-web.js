@@ -25,7 +25,7 @@ Page({
     if (work && work != '') {
       var url = api.workWebUrl(work);
       var who = wx.getStorageSync('who');
-      var token = ';'
+      var token = ''
       if (who && who.token) {
         token = who.token;
         url = url + '&x-token=' + token;

@@ -90,6 +90,10 @@ function o2oaOrganizationAuthenticationBaseUrl() {
 function o2oaCmsServiceBaseUrl() {
   return getO2AssembleUrl('x_cms_assemble_control');
 }
+//bbs论坛模块
+function o2oaBBSServiceBaseUrl() {
+  return getO2AssembleUrl('x_bbs_assemble_control');
+}
 //热点图片模块
 function o2oaHotPicServiceBaseUrl() {
   return getO2AssembleUrl('x_hotpic_assemble_control');
@@ -135,5 +139,6 @@ module.exports = {
   o2oaCmsServiceBaseUrl: o2oaCmsServiceBaseUrl,
   o2oaHotPicServiceBaseUrl: o2oaHotPicServiceBaseUrl,
   o2oaFileServiceBaseUrl: o2oaFileServiceBaseUrl,
-  o2oaProcessServiceBaseUrl: o2oaProcessServiceBaseUrl
+  o2oaProcessServiceBaseUrl: o2oaProcessServiceBaseUrl,
+  o2oaBBSServiceBaseUrl: o2oaBBSServiceBaseUrl
 }

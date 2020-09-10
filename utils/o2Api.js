@@ -27,12 +27,24 @@ let login = (param) => o2Request.post(o2Request.o2oaOrganizationAuthenticationBa
 let hotPicList = () => o2Request.put(o2Request.o2oaHotPicServiceBaseUrl() + '/jaxrs/user/hotpic/filter/list/page/1/count/5', {}, false);
 //cms 分页获取文档列表
 let cmsDocumentFilterList = (lastId, pageSize, param) => o2Request.put(o2Request.o2oaCmsServiceBaseUrl() + '/jaxrs/document/filter/list/'+lastId+'/next/'+pageSize, param);
+//cms 附件下载地址
+let cmsAttachementUrl = (attId) => o2Request.o2oaCmsServiceBaseUrl() + '/jaxrs/fileinfo/download/document/'+attId;
 
 
 /////////////////////流程 //////////////////////////////
 
 // 待办列表
 let taskList = (lastId, pageSize) => o2Request.get(o2Request.o2oaProcessServiceBaseUrl() + '/jaxrs/task/list/'+lastId+'/next/'+pageSize);
+//工作附件下载地址
+let workAttachmentUrl = (attId, workId) => o2Request.o2oaProcessServiceBaseUrl() + '/jaxrs/attachment/download/'+attId+'/work/'+workId;
+//完成工作的附件下载地址
+let workCompletedAttachementUrl = (attId, workcompletedId) => o2Request.o2oaProcessServiceBaseUrl() + '/jaxrs/attachment/download/'+attId+'/workcompleted/'+workcompletedId;
+
+
+/////////////////////////论坛///////////////////////////
+//帖子附件
+let bbsAttachementUrl = (attId) => o2Request.o2oaBBSServiceBaseUrl() + '/jaxrs/attachment/download/' + attId;
+
 
 
 // 处理o2请求返回错误
@@ -52,6 +64,10 @@ module.exports = {
   workWebUrl,
   workCompletedWebUrl,
   bbsWebUrl,
+  workAttachmentUrl,
+  workCompletedAttachementUrl,
+  cmsAttachementUrl,
+  bbsAttachementUrl,
   who,
   login,
   hotPicList,

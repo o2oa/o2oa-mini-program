@@ -21,8 +21,17 @@ const toast = (title, icon = 'none') => {
     icon: icon
   })
 }
+const showLoading = (message = '加载中...') => {
+  wx.showLoading({
+    title: message,
+  });
+}
+
+const hideLoading = () => wx.hideLoading();
 
 module.exports = {
   formatTime: formatTime,
-  toast: toast
+  toast: toast,
+  showLoading: showLoading,
+  hideLoading: hideLoading
 }

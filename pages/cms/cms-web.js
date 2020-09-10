@@ -23,7 +23,7 @@ Page({
     if (id && id != '') {
       var url = api.cmsWebUrl(id);
       var who = wx.getStorageSync('who');
-      var token = ';'
+      var token = ''
       if (who && who.token) {
         token = who.token;
         url = url + '&x-token=' + token;

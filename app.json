@@ -5,7 +5,8 @@
     "pages/me/me",
     "pages/logs/logs",
     "pages/cms/cms-web",
-    "pages/progress/work-web"
+    "pages/progress/work-web",
+    "pages/file/download"
   ],
   "tabBar": {
     "color": "#666666",
