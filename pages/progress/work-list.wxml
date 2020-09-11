@@ -1,0 +1,10 @@
+<!--pages/progress/work-list.wxml-->
+<o2-navi title="{{navTitle}}" ></o2-navi>
+<!--待办、已办、待阅、已阅 列表-->
+<block>
+  <view class="article" wx:for="{{articleList}}" wx:key="index" bindtap="bindTapArticle" data-index="{{index}}" hover-class="item-hover" hover-start-time="0" hover-stay-time="200">
+    <text class="type">{{item.type}}</text>
+    <text class="date">{{item.date}}</text>
+    <text class="title">{{item.title}}</text>
+  </view>
+</block>

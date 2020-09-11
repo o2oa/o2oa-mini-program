@@ -18,19 +18,19 @@
 </view>
 <!--应用列表-->
 <view class="app-list" >
-  <view class="item">
+  <view class="item" bindtap="bindTapTaskList">
     <image src="../../assets/img/icon_task.png" ></image>
     <text>待办</text>
   </view>
-  <view class="item">
+  <view class="item" bindtap="bindTapTaskCompletedList">
     <image src="../../assets/img/icon_task_completed.png" ></image>
     <text>已办</text>
   </view>
-  <view class="item">
+  <view class="item" bindtap="bindTapReadList">
     <image src="../../assets/img/icon_read.png" ></image>
     <text>待阅</text>
   </view>
-  <view class="item">
+  <view class="item" bindtap="bindTapReadCompletedList">
     <image src="../../assets/img/icon_read_completed.png" ></image>
     <text>已阅</text>
   </view>

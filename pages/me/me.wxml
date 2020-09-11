@@ -1,4 +1,68 @@
 <!--login.wxml-->
-<view class="container">
-  <text class="user-motto">Login</text>
+<o2-navi title="我的" ></o2-navi>
+<view class="me">
+ 
+  <image class="avatar" src="{{avatarUrl}}"></image>
+
+  <view class="line">
+    <text class="label">姓名</text>
+    <view class="right">
+      <text>{{person.name}}</text>
+    </view>
+  </view>
+
+  <view class="line">
+    <text class="label">工号</text>
+    <view class="right">
+      <text>{{person.employee}}</text>
+    </view>
+  </view>
+
+  <view class="line" bindtap="bindTapLine" data-param="mail">
+    <text class="label">邮件地址</text>
+    <view class="right">
+      <image src="../../assets/img/icon_arrow.png"></image>
+      <text>{{person.mail}}</text>
+    </view>
+  </view>
+
+  <view class="line" bindtap="bindTapLine" data-param="mobile">
+    <text class="label">手机号码</text>
+    <view class="right">
+      <image src="../../assets/img/icon_arrow.png"></image>
+      <text>{{person.mobile}}</text>
+    </view>
+  </view>
+
+  <view class="line" bindtap="bindTapLine" data-param="officePhone">
+    <text class="label">办公电话</text>
+    <view class="right">
+      <image src="../../assets/img/icon_arrow.png"></image>
+      <text>{{person.officePhone}}</text>
+    </view>
+  </view>
+
+  <view class="line" bindtap="bindTapLine" data-param="signature">
+    <text class="label">个人签名</text>
+    <view class="right">
+      <image src="../../assets/img/icon_arrow.png"></image>
+      <text>{{person.signature}}</text>
+    </view>
+  </view>
 </view>
+
+<mp-dialog title="修改{{dialogLabel}}" show="{{showDialog}}" bindbuttontap="tapDialogButton" buttons="{{[{text: '取消'}, {text: '确认'}]}}">
+    <!-- <view>
+      <mp-cell prop="qq" title="{{dialogLabel}}" ext-class="">
+          <input data-field="qq" class="weui-input" value="{{dialogValue}}" />
+      </mp-cell> -->
+      <view class="page-section">
+        <!-- <view class="weui-cells__title">{{dialogLabel}}</view> -->
+        <view class="weui-cells weui-cells_after-title">
+          <view class="weui-cell weui-cell_input">
+            <input class="weui-input" name="dialogInput" auto-focus value="{{dialogValue}}" bindinput="getDialogInputValue"  />
+          </view>
+        </view>
+      </view>
+    <!-- </view> -->
+</mp-dialog>

@@ -1,0 +1,40 @@
+/* pages/progress/work-list.wxss */
+
+
+.article {
+  margin: 0rpx 24rpx;
+  padding: 20rpx;
+  height: 150rpx;
+  box-sizing: border-box;
+  position: relative;
+  border-bottom: 1px #efefef solid;
+}
+
+.article .title {
+  font-size: 28rpx;
+  color: #696969;
+  word-wrap: break-word;
+  white-space: normal !important;
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  position: absolute;
+  bottom: 20rpx;
+  margin-left: 10rpx;
+}
+.article .date {
+  font-size: 24rpx;
+  color: #bfbfbf;
+  position: absolute;
+  top: 20rpx;
+  right: 20rpx;
+}
+.article .type {
+  font-size: 24rpx;
+  font-weight: bold;
+  color: #2c2c2c;
+  padding: 2rpx 5rpx;
+  margin-left: 10rpx;
+}

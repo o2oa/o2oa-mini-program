@@ -1,0 +1,45 @@
+.me {
+  height: 100%;
+  background-color: #f7f7f7;
+  position: relative;
+}
+
+.avatar {
+  margin:60rpx auto;
+  display: block;
+  width: 128rpx;
+  height: 128rpx;
+  border-radius: 64rpx;
+}
+
+.line {
+  height: 84rpx;
+  background-color:#ffffff;
+  border-bottom: 1px solid #efefef;
+}
+.line .label {
+  display: inline;
+  line-height: 84rpx;
+  color:#333333;
+  margin-left: 24rpx;
+}
+.line .right {
+  float: right;
+  height: 80rpx;
+  margin-right: 24rpx;
+  vertical-align: middle;
+}
+.right text {
+  float: right;
+  vertical-align: middle;
+  margin-right: 16rpx;
+  height: 84rpx;
+  line-height: 84rpx;
+  font-size: smaller;
+}
+.right image {
+  width: 42rpx;
+  height: 42rpx;
+  float: right;
+  margin-top: 21rpx;
+}

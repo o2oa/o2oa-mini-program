@@ -106,6 +106,10 @@ function o2oaFileServiceBaseUrl() {
 function o2oaProcessServiceBaseUrl() {
   return getO2AssembleUrl('x_processplatform_assemble_surface');
 }
+//人员管理
+function o2oaPersonalServiceBaseUrl() {
+  return getO2AssembleUrl('x_organization_assemble_personal');
+}
 
 // get请求
 function get(path, param = {}, isShowLoading = true) {
@@ -140,5 +144,6 @@ module.exports = {
   o2oaHotPicServiceBaseUrl: o2oaHotPicServiceBaseUrl,
   o2oaFileServiceBaseUrl: o2oaFileServiceBaseUrl,
   o2oaProcessServiceBaseUrl: o2oaProcessServiceBaseUrl,
-  o2oaBBSServiceBaseUrl: o2oaBBSServiceBaseUrl
+  o2oaBBSServiceBaseUrl: o2oaBBSServiceBaseUrl,
+  o2oaPersonalServiceBaseUrl: o2oaPersonalServiceBaseUrl
 }

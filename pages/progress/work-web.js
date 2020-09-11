@@ -19,28 +19,47 @@ Page({
    * Lifecycle function--Called when page load
    */
   onLoad: function (options) {
-    var work = options.work;
     var title = decodeURIComponent(options.title);
-    console.log("进入 work web页面， work:", work);
-    if (work && work != '') {
-      var url = api.workWebUrl(work);
-      var who = wx.getStorageSync('who');
-      var token = ''
-      if (who && who.token) {
-        token = who.token;
-        url = url + '&x-token=' + token;
-      }
-      console.log('待办页面 url', url);
-      this.setData({
-        workUrl: url,
-        navTitle: title
-      });
-    }else {
-      util.toast('没有传入待办workId！');
+    if(!options.workCompleted && !options.work) {
+      util.toast('参数错误！');
       wx.navigateBack({
         delta: 1,
       });
-    } 
+    } else if(!options.workCompleted) {
+      this.openWorkUrl(options.work, title);
+    } else {
+      this.openWorkCompletedUrl(options.workCompleted, title);
+    }
+  },
+  // 打开工作表单 未完成的工作
+  openWorkUrl: function(work, title = '') {
+    var url = api.workWebUrl(work);
+    var who = wx.getStorageSync('who');
+    var token = ''
+    if (who && who.token) {
+      token = who.token;
+      url = url + '&x-token=' + token;
+    }
+    console.log('待办页面 url', url);
+    this.setData({
+      workUrl: url,
+      navTitle: title
+    });
+  },
+  // 打开工作表单 已结束的工作
+  openWorkCompletedUrl: function(workcompletedid, title = '') {
+    var url = api.workCompletedWebUrl(workcompletedid);
+    var who = wx.getStorageSync('who');
+    var token = ''
+    if (who && who.token) {
+      token = who.token;
+      url = url + '&x-token=' + token;
+    }
+    console.log('待办页面 url', url);
+    this.setData({
+      workUrl: url,
+      navTitle: title
+    });
   },
 
   /**

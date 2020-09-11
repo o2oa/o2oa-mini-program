@@ -7,8 +7,8 @@ let setDistribute = (distribute) => o2Request.setDistribute(distribute);
 let cmsWebUrl = (id) => o2Request.getO2WebBaseUrl() + '/x_desktop/cmsdocMobile.html?id=' + id;
 // 未完成的工作表单打开地址
 let workWebUrl = (work) => o2Request.getO2WebBaseUrl() + '/x_desktop/workmobilewithaction.html?workid=' + work;
-//已经完成的工作表单打开地址
-let workCompletedWebUrl = (workcompleted) => o2Request.getO2WebBaseUrl() + '/x_desktop/workmobilewithaction.html?workcompletedid=' + workcompleted;
+//工作表单打开地址 已结束 
+let workCompletedWebUrl = (workcompletedid) => o2Request.getO2WebBaseUrl() + '/x_desktop/workmobilewithaction.html?workcompletedid=' + workcompletedid;
 //论坛帖子打开地址 subjectId：帖子id page：评论页码
 let bbsWebUrl = (subjectId, page) => o2Request.getO2WebBaseUrl() + '/x_desktop/forumdocMobile.html?id=' + subjectId + '&page=' + page;
 
@@ -35,6 +35,13 @@ let cmsAttachementUrl = (attId) => o2Request.o2oaCmsServiceBaseUrl() + '/jaxrs/f
 
 // 待办列表
 let taskList = (lastId, pageSize) => o2Request.get(o2Request.o2oaProcessServiceBaseUrl() + '/jaxrs/task/list/'+lastId+'/next/'+pageSize);
+//已办列表
+let taskCompletedList = (lastId, pageSize) => o2Request.get(o2Request.o2oaProcessServiceBaseUrl() + '/jaxrs/taskcompleted/list/'+lastId+'/next/'+pageSize);
+//待阅列表
+let readList = (lastId, pageSize) => o2Request.get(o2Request.o2oaProcessServiceBaseUrl() + '/jaxrs/read/list/'+lastId+'/next/'+pageSize);
+//已阅列表
+let readCompletedList = (lastId, pageSize) => o2Request.get(o2Request.o2oaProcessServiceBaseUrl() + '/jaxrs/readcompleted/list/'+lastId+'/next/'+pageSize);
+
 //工作附件下载地址
 let workAttachmentUrl = (attId, workId) => o2Request.o2oaProcessServiceBaseUrl() + '/jaxrs/attachment/download/'+attId+'/work/'+workId;
 //完成工作的附件下载地址
@@ -44,6 +51,12 @@ let workCompletedAttachementUrl = (attId, workcompletedId) => o2Request.o2oaProc
 /////////////////////////论坛///////////////////////////
 //帖子附件
 let bbsAttachementUrl = (attId) => o2Request.o2oaBBSServiceBaseUrl() + '/jaxrs/attachment/download/' + attId;
+
+////////////////////////人员//////////////////////////
+//个人信息
+let me = () => o2Request.get(o2Request.o2oaPersonalServiceBaseUrl() + '/jaxrs/person');
+//个人用户的头像地址
+let myAvatarUrl = () => o2Request.o2oaPersonalServiceBaseUrl() + '/jaxrs/person/icon';
 
 
 
@@ -72,5 +85,10 @@ module.exports = {
   login,
   hotPicList,
   cmsDocumentFilterList,
-  taskList
+  taskList,
+  taskCompletedList,
+  readList,
+  readCompletedList,
+  me,
+  myAvatarUrl
 }

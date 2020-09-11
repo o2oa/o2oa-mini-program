@@ -136,7 +136,7 @@ Page({
     })
   },
 
-
+  //点击滚动图片
   bindTapHotNews: function(event) {
     let index = event.currentTarget.dataset.index;
     let data = this.data.bannerList[index];
@@ -148,6 +148,7 @@ Page({
       });
     }
   },
+  //点击新闻或者任务
   bindTapArticle: function(event) {
     let index = event.currentTarget.dataset.index;
     let data = this.data.articleList[index];
@@ -161,7 +162,7 @@ Page({
       });
     }
   },
-  //点击信息中心
+  //点击信息中心Tab
   bindTapInfoCenter: function(event) {
     if (this.data.currentTab == 'tasks') {
       this.setData({
@@ -170,7 +171,7 @@ Page({
       this.loadArticleList(true);
     }
   },
-  //点击办公中心
+  //点击办公中心Tab
   bindTapTaskInfoCenter: function(event) {
     if (this.data.currentTab == 'news') {
       this.setData({
@@ -178,6 +179,26 @@ Page({
       });
       this.loadArticleList(true);
     }
+  },
+  bindTapTaskList: function() {
+    wx.navigateTo({
+      url: '../progress/work-list?type=task',
+    });
+  },
+  bindTapTaskCompletedList: function() {
+    wx.navigateTo({
+      url: '../progress/work-list?type=taskCompleted',
+    });
+  },
+  bindTapReadList: function() {
+    wx.navigateTo({
+      url: '../progress/work-list?type=read',
+    });
+  },
+  bindTapReadCompletedList: function() {
+    wx.navigateTo({
+      url: '../progress/work-list?type=readCompleted',
+    });
   },
    /**
    * 页面相关事件处理函数--监听用户下拉动作

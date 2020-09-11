@@ -6,7 +6,8 @@
     "pages/logs/logs",
     "pages/cms/cms-web",
     "pages/progress/work-web",
-    "pages/file/download"
+    "pages/file/download",
+    "pages/progress/work-list"
   ],
   "tabBar": {
     "color": "#666666",
@@ -24,7 +25,7 @@
         "pagePath": "pages/me/me",
         "iconPath": "assets/img/icon_main_my.png",
         "selectedIconPath": "assets/img/icon_main_my_red.png",
-        "text": "我"
+        "text": "我的"
       }
     ]
   },
@@ -35,5 +36,8 @@
     "navigationBarTextStyle": "black"
   },
   "style": "v2",
-  "sitemapLocation": "sitemap.json"
+  "sitemapLocation": "sitemap.json",
+  "useExtendedLib": {
+    "weui": true
+  }
 }

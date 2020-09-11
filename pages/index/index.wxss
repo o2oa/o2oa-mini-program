@@ -100,7 +100,7 @@
   height: 150rpx;
   box-sizing: border-box;
   position: relative;
-  border-bottom: 1rpx #cdcdcd solid;
+  border-bottom: 1px #efefef solid;
 }
 
 .article .title {
