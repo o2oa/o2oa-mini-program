@@ -1,6 +1,7 @@
 
 let util = require('../../utils/util.js')
 const api = require('../../utils/o2Api.js');
+const o2Api = require('../../utils/o2Api.js');
 
 Page({
   data: {
@@ -89,14 +90,40 @@ Page({
     var value = this.data.dialogValue;
     var param = this.data.dialogParam;
     console.log('value:', value, ',param:', param);
-    if (event.detail.index == 1) {
-      console.log('点击了确定')
-    }
     this.setData({
       showDialog: false,
       dialogLabel: '',
       dialogValue: '',
       dialogParam:  ''
     });
+    if (event.detail.index == 1) {
+      var person = this.data.person;
+      if (!value ) {
+        var value = ''
+      }
+      if (param == 'mail') {
+        person.mail = value;
+        this.putPerson(person);
+      }else if (param == 'mobile') {
+        person.mobile = value;
+        this.putPerson(person);
+      }else if (param == 'officePhone') {
+        person.officePhone = value;
+        this.putPerson(person);
+      }else if (param == 'signature') {
+        person.signature = value;
+        this.putPerson(person);
+      }
+    }
+  },
+  putPerson: function(person) {
+    api.putMyInfo(person).then(id => {
+      this.setData({
+        person: person
+      });
+      util.toast('更新成功！');
+    }).catch(err => {
+      o2Api.o2Error(err);
+    })
   }
 })

@@ -57,6 +57,8 @@ let bbsAttachementUrl = (attId) => o2Request.o2oaBBSServiceBaseUrl() + '/jaxrs/a
 let me = () => o2Request.get(o2Request.o2oaPersonalServiceBaseUrl() + '/jaxrs/person');
 //个人用户的头像地址
 let myAvatarUrl = () => o2Request.o2oaPersonalServiceBaseUrl() + '/jaxrs/person/icon';
+//更新个人信息
+let putMyInfo = (person) => o2Request.put(o2Request.o2oaPersonalServiceBaseUrl() + '/jaxrs/person', person);
 
 
 
@@ -90,5 +92,6 @@ module.exports = {
   readList,
   readCompletedList,
   me,
-  myAvatarUrl
+  myAvatarUrl,
+  putMyInfo
 }
