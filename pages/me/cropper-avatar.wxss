@@ -1,0 +1,15 @@
+/* pages/me/cropper-avatar.wxss */
+.bottom{
+  position: absolute;
+  width:100%;
+  bottom:50rpx;
+  display: flex;
+  z-index: 10;
+  justify-content: center;
+  align-items: center;
+  flex-wrap:wrap;
+  height: 210rpx;
+}
+.bottom button {
+  margin: 15px auto;
+}

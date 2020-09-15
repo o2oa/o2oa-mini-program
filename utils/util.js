@@ -28,6 +28,7 @@ const showLoading = (message = '加载中...') => {
 }
 
 const hideLoading = () => wx.hideLoading();
+ 
 
 module.exports = {
   formatTime: formatTime,

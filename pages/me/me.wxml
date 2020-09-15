@@ -2,7 +2,7 @@
 <o2-navi title="我的" ></o2-navi>
 <view class="me">
  
-  <image class="avatar" src="{{avatarUrl}}"></image>
+  <image class="avatar" src="{{avatarUrl}}" bindtap="bindTapAvatar"></image>
 
   <view class="line">
     <text class="label">姓名</text>

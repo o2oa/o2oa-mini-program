@@ -59,6 +59,8 @@ let me = () => o2Request.get(o2Request.o2oaPersonalServiceBaseUrl() + '/jaxrs/pe
 let myAvatarUrl = () => o2Request.o2oaPersonalServiceBaseUrl() + '/jaxrs/person/icon';
 //更新个人信息
 let putMyInfo = (person) => o2Request.put(o2Request.o2oaPersonalServiceBaseUrl() + '/jaxrs/person', person);
+// 上传当前用户头像的 上传地址
+let uploadMyAvatarUrl = () => o2Request.o2oaPersonalServiceBaseUrl() + '/jaxrs/person/icon';
 
 
 
@@ -93,5 +95,6 @@ module.exports = {
   readCompletedList,
   me,
   myAvatarUrl,
+  uploadMyAvatarUrl,
   putMyInfo
 }

@@ -1,0 +1,7 @@
+{
+  "disableScroll": true,
+  "usingComponents": {
+    "o2-navi": "../../components/o2-navi/o2-navi",
+    "image-cropper": "../../components/image-cropper/image-cropper"
+  }
+}

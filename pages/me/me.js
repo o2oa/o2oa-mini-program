@@ -13,7 +13,7 @@ Page({
     person: {}
   },
   onLoad: function () {
-    this.avatar();  
+    
     //获取用户信息
      api.me().then(info => {
        this.setData({
@@ -22,6 +22,9 @@ Page({
      }).catch(err => {
        api.o2Error(err);
      })
+  },
+  onShow: function() {
+    this.avatar();  
   },
   //获取头像文件
   avatar: function() {
@@ -56,6 +59,11 @@ Page({
         });
       }
     })
+  },
+  bindTapAvatar: function(event) {
+    wx.navigateTo({
+      url: './cropper-avatar',
+    });
   },
   bindTapLine: function(event) {
     console.log(event);

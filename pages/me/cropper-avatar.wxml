@@ -1,0 +1,10 @@
+<!--pages/me/cropper-avatar.wxml-->
+<o2-navi title="修改头像" ></o2-navi>
+<image-cropper id="image-cropper" bindload="cropperload" bindimageload="loadimage"  limit_move="true" disable_rotate="true" width="{{width}}" height="{{height}}" imgSrc="{{src}}"  max_width="{{max_width}}" max_height="{{max_height}}"  disable_ratio="false">
+</image-cropper>
+
+<view class="bottom">
+  <button class="weui-btn weui-btn_mini weui-btn_default" catchtap='chooseImage' >选择图片</button>
+
+  <button class="weui-btn weui-btn_mini weui-btn_primary" bindtap='submit'>确定</button>
+</view>
