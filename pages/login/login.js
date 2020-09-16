@@ -7,7 +7,8 @@ Page({
     name: '',
     password: '',
     nameFocus: true,
-    passwordFocus: false
+    passwordFocus: false,
+    registerEnable: false
   },
   onLoad: function () {
     this.connectCenterServer();
@@ -56,6 +57,15 @@ Page({
        });
     }
   },
+  checkRegisterMode: function() {
+    api.registerMode().then(res => {
+      if (res.value == 'code' ) {
+        this.setData({
+          registerEnable: true
+        })
+      }
+    })
+  },
 
   inputName: function(event) {
     this.data.name = event.detail.value;
@@ -82,24 +92,44 @@ Page({
       util.toast("请输入用户名！");
       return;
     }
-    // if (this.data.name.length < 3) {
-    //   util.toast("请输入至少3位用户名！");
-    //   return;
-    // }
     if (this.data.password.length == 0) {
       util.toast("请输入密码！");
       return;
     }
-    // if (this.data.password.length < 6) {
-    //   util.toast("请输入至少6位密码！");
-    //   return;
-    // }
-
     let param = {
       credential: this.data.name,
       password: this.data.password
     }
     console.log(param);
+    api.login(param)
+      .then(data => {
+        console.log('登录成功', data);
+        wx.setStorageSync('who', data);
+        util.toast('登录成功~');
+        //跳转到首页
+        wx.switchTab({
+          url: '../index/index'
+        })
+      }).catch(err => {
+        console.log('登录失败', err);
+        api.o2Error(err, '登录失败');
+      });
+  },
+  toRegister: function() {
+    wx.navigateTo({
+      url: './register',
+    })
+  },
+  // 体验账号登录
+  demoLogin: function(event) {
+    let no = event.currentTarget.dataset.no;
+    var param = {};
+    if (no == '1') {
+     param = {
+        credential: 'kf1',
+        password: 'o2'
+      }
+    }
     api.login(param)
       .then(data => {
         console.log('登录成功', data);

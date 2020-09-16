@@ -15,10 +15,13 @@ let bbsWebUrl = (subjectId, page) => o2Request.getO2WebBaseUrl() + '/x_desktop/f
 // 中心服务器
 let centerServer = () => o2Request.get(o2Request.o2oaCenterUrl());
 
+/////////////////////////////认证中心///////////////////////////////////
 // 认证
 let who = () => o2Request.get(o2Request.o2oaOrganizationAuthenticationBaseUrl() + '/jaxrs/authentication');
 //param: credential=xxxx,password=xxxx
 let login = (param) => o2Request.post(o2Request.o2oaOrganizationAuthenticationBaseUrl() + '/jaxrs/authentication', param);
+//登出
+let logout = () => o2Request.delete(o2Request.o2oaOrganizationAuthenticationBaseUrl() + '/jaxrs/authentication');
 
 
 //////////////////////////cms 信息中心//////////////////////////////
@@ -61,6 +64,12 @@ let myAvatarUrl = () => o2Request.o2oaPersonalServiceBaseUrl() + '/jaxrs/person/
 let putMyInfo = (person) => o2Request.put(o2Request.o2oaPersonalServiceBaseUrl() + '/jaxrs/person', person);
 // 上传当前用户头像的 上传地址
 let uploadMyAvatarUrl = () => o2Request.o2oaPersonalServiceBaseUrl() + '/jaxrs/person/icon';
+// 发送短信 获取短信验证码
+let sendSms = (mobile) => o2Request.get(o2Request.o2oaPersonalServiceBaseUrl() + '/jaxrs/regist/code/mobile/' + mobile);
+//注册人员
+let register = (form) => o2Request.post(o2Request.o2oaPersonalServiceBaseUrl() + '/jaxrs/regist', form);
+//是否开启注册功能 "data": {"value": "disable"}  disable,captcha,code
+let registerMode = () => o2Request.get(o2Request.o2oaPersonalServiceBaseUrl() + '/jaxrs/regist/mode');
 
 
 
@@ -87,6 +96,7 @@ module.exports = {
   bbsAttachementUrl,
   who,
   login,
+  logout,
   hotPicList,
   cmsDocumentFilterList,
   taskList,
@@ -96,5 +106,8 @@ module.exports = {
   me,
   myAvatarUrl,
   uploadMyAvatarUrl,
-  putMyInfo
+  putMyInfo,
+  sendSms,
+  register,
+  registerMode
 }

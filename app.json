@@ -8,7 +8,8 @@
     "pages/progress/work-web",
     "pages/file/download",
     "pages/progress/work-list",
-    "pages/me/cropper-avatar"
+    "pages/me/cropper-avatar",
+    "pages/login/register"
   ],
   "tabBar": {
     "color": "#666666",

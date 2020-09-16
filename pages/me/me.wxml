@@ -49,6 +49,10 @@
       <text>{{person.signature}}</text>
     </view>
   </view>
+
+  <view class="weui-btn-area">
+      <button class="weui-btn" style="background-color: #fb4747;"  type="primary" bindtap="bindTapLogout">退出登录</button>
+  </view>
 </view>
 
 <mp-dialog title="修改{{dialogLabel}}" show="{{showDialog}}" bindbuttontap="tapDialogButton" buttons="{{[{text: '取消'}, {text: '确认'}]}}">
@@ -65,4 +69,8 @@
         </view>
       </view>
     <!-- </view> -->
+</mp-dialog>
+
+<mp-dialog title="提示" show="{{showLogoutDialog}}" bindbuttontap="tapDialogLogoutButton" buttons="{{[{text: '取消'}, {text: '确认'}]}}">
+  <view>确定要退出登录吗?</view>
 </mp-dialog>

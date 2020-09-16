@@ -1,3 +1,4 @@
+/* pages/login/register.wxss */
 
 .head-img{
 	border-radius: 50%;
@@ -5,8 +6,6 @@
   height: 156rpx;
   margin: 20rpx auto;
 }
-
-
 
 .input-active {
   border-bottom: 1rpx #fb4747 solid;
@@ -17,7 +16,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 180rpx 100rpx 0;
+  padding: 100rpx 100rpx 0;
   box-sizing: border-box;
 }
 
@@ -28,6 +27,22 @@ input {
   border-bottom: 1rpx #2c2c2c solid;
   padding-bottom: 10rpx;
   font-size: 32rpx;
+}
+.code-input  {
+  width: 40%;
+  height: 50rpx;
+  margin-top: 60rpx;
+  border-bottom: 1rpx #2c2c2c solid;
+  padding-bottom: 10rpx;
+  font-size: 32rpx;
+  float: left;
+}
+.code-button {
+  background-color: #fb4747;
+  width: 50%;
+  float: left;
+  margin-top: 60rpx;
+  margin-left: 20rpx;
 }
 
 .login {

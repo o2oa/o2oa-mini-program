@@ -1,0 +1,18 @@
+<!--pages/login/register.wxml-->
+<view class="login-page" >
+  <image src="/assets/img/login_logo.png" mode="aspectFit" class="head-img"/>
+  <input class="{{focusLabel == 'name'?'input-active':''}}" placeholder="用户名"  focus="true" data-label="name" bindfocus="bindfocusFun" bindinput="bindInputFun"></input>
+  <input class="{{focusLabel == 'password'?'input-active':''}}" placeholder="密码" password="true" data-label="password" bindfocus="bindfocusFun" bindinput="bindInputFun"></input>
+  <input class="{{focusLabel == 'confirmPassword'?'input-active':''}}" placeholder="确认密码" password="true"  data-label="confirmPassword" bindfocus="bindfocusFun" bindinput="bindInputFun"></input>
+  <input class="{{focusLabel == 'mobile'?'input-active':''}}" placeholder="手机号码"  data-label="mobile"  bindfocus="bindfocusFun" bindinput="bindInputFun"></input>
+  <view>
+    <input class="code-input {{focusLabel == 'codeAnswer'?'input-active':''}}" placeholder="验证码" maxlength="20" data-label="codeAnswer" bindfocus="bindfocusFun" bindinput="bindInputFun"></input>
+    <button class="weui-btn weui-btn_mini weui-btn_primary" style="background-color: #fb4747;width: 50%;float: left;margin-top: 60rpx;margin-left: 20rpx;"   bindtap="bindSendCode" disabled='{{sending}}'>发送验证码</button>
+  </view>
+  <view class="login" bindtap="bindTapRegister" hover-class="hover" hover-start-time="0" hover-stay-time="100">注册</view>
+
+  <view class="weui-btn-area">
+      <text class="register-btn" bindtap="toLogin">去登录</text>
+  </view>
+  
+</view>

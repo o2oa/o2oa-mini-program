@@ -6,6 +6,7 @@ const o2Api = require('../../utils/o2Api.js');
 Page({
   data: {
     showDialog: false,
+    showLogoutDialog: false,
     dialogLabel: '',
     dialogValue: '',
     dialogParam: '',
@@ -59,6 +60,11 @@ Page({
         });
       }
     })
+  },
+  bindTapLogout: function(event) {
+    this.setData({
+      showLogoutDialog: true
+    });
   },
   bindTapAvatar: function(event) {
     wx.navigateTo({
@@ -133,5 +139,28 @@ Page({
     }).catch(err => {
       o2Api.o2Error(err);
     })
+  },
+  tapDialogLogoutButton: function(event) {
+    this.setData({
+      showLogoutDialog: false
+    })
+    if (event.detail.index == 1) {
+      api.logout().then(res => {
+        console.log('登出', res);
+        wx.removeStorageSync('who');
+        wx.removeStorageSync('cookie');
+        wx.redirectTo({
+          url: '../login/login'
+        });
+      }).catch(err => {
+        console.log('登出错误', err);
+        wx.removeStorageSync('who');
+        wx.removeStorageSync('cookie');
+        wx.redirectTo({
+          url: '../login/login'
+        });
+      })
+    }
+   
   }
 })
