@@ -129,6 +129,21 @@ Page({
         credential: 'kf1',
         password: 'o2'
       }
+    } else if (no == '2') {
+      param = {
+        credential:'办公室机要',
+        password: 'o2'
+      }
+    } else if (no == '3') {
+      param = {
+        credential:'办公室初核',
+        password: 'o2'
+      }
+    } else if (no == '4') {
+      param = {
+        credential:'办公室主任',
+        password: 'o2'
+      }
     }
     api.login(param)
       .then(data => {

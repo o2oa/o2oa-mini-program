@@ -9,6 +9,10 @@
       <text class="register-btn" bindtap="toRegister">注册</text>
   </view>
   <view class="weui-btn-area">
-      <text >体验账号：</text><text class="demo-people-link" bindtap="demoLogin" data-no="1">开发人员1</text>
+      <text >体验账号：</text>
+      <text class="demo-people-link" bindtap="demoLogin" data-no="1">开发人员1</text>
+      <text class="demo-people-link" bindtap="demoLogin" data-no="2">办公室机要</text>
+      <text class="demo-people-link" bindtap="demoLogin" data-no="3">办公室初核</text>
+      <text class="demo-people-link" bindtap="demoLogin" data-no="4">办公室主任</text>
   </view>
 </view>
