@@ -40,6 +40,7 @@ Page({
       token = who.token;
       url = url + '&x-token=' + token;
     }
+    url = url + '#wechat_redirect';
     console.log('待办页面 url', url);
     this.setData({
       workUrl: url,
@@ -55,6 +56,7 @@ Page({
       token = who.token;
       url = url + '&x-token=' + token;
     }
+    url = url + '#wechat_redirect';
     console.log('待办页面 url', url);
     this.setData({
       workUrl: url,

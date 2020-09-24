@@ -1,3 +1,9 @@
+page {
+  height: 100%;
+  transition: all 0.3s linear 0s;
+    margin-top: 0px;
+    background-color: #f7f7f7;
+}
 .me {
   height: 100%;
   background-color: #f7f7f7;

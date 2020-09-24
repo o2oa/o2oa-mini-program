@@ -28,6 +28,7 @@ Page({
         token = who.token;
         url = url + '&x-token=' + token;
       }
+      url = url + '#wechat_redirect';
       console.log('信息页码 url', url);
       this.setData({
         workUrl: url,
