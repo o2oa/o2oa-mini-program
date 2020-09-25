@@ -3,6 +3,13 @@
 <view class="me">
  
   <image class="avatar" src="{{avatarUrl}}" bindtap="bindTapAvatar"></image>
+<!-- 
+<view style="position: absolute;top: 30rpx;right: 0rpx;width: 128rpx;height: 64rpx;background-color:#ffffff;border-radius:">
+  <view>联系我们</view>
+  <button open-type="contact" bindcontact="handleContact" style="display: inline-block;position: absolute;width: 100%;background: salmon;opacity: 0;"></button>
+</view>
+   -->
+  
 
   <view class="line">
     <text class="label">姓名</text>
@@ -74,3 +81,6 @@
 <mp-dialog title="提示" show="{{showLogoutDialog}}" bindbuttontap="tapDialogLogoutButton" buttons="{{[{text: '取消'}, {text: '确认'}]}}">
   <view>确定要退出登录吗?</view>
 </mp-dialog>
+
+<view class="zixun" style="background: url(../../assets/img/contact_us.png) center center no-repeat;"><contact-button type="default-dark" size="100" class="kf"></contact-button></view>
+<view class="zixun_text">联系我们</view>

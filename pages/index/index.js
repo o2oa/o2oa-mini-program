@@ -27,7 +27,9 @@ Page({
   
   onLoad: function () {
      this.loadHotNews();
-     this.loadArticleList(true);
+  },
+  onShow: function() {
+    this.loadArticleList(true);
   },
   loadHotNews: function() {
     api.hotPicList().then(list => {

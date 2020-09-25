@@ -61,6 +61,11 @@ Page({
       }
     })
   },
+  handleContact: function(e) {
+    //点击客服消息可以传送路径和query参数过来
+    console.log(e.detail.path)
+    console.log(e.detail.query)
+  },
   bindTapLogout: function(event) {
     this.setData({
       showLogoutDialog: true
