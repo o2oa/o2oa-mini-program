@@ -61,6 +61,7 @@ page {
   text-align: center;
   font-size: 14px;
   color: #333;
+  background: url(https://sample.o2oa.net/contact_us.png) center center no-repeat;
 }
 
 .zixun .kf{
