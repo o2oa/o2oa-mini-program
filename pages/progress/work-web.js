@@ -20,16 +20,34 @@ Page({
    */
   onLoad: function (options) {
     var title = decodeURIComponent(options.title);
-    if(!options.workCompleted && !options.work) {
+    if(!options.workCompleted && !options.work && !options.draft) {
       util.toast('参数错误！');
       wx.navigateBack({
         delta: 1,
       });
-    } else if(!options.workCompleted) {
-      this.openWorkUrl(options.work, title);
-    } else {
+    } else if(options.workCompleted) {
       this.openWorkCompletedUrl(options.workCompleted, title);
+    } else if(options.work) {
+      this.openWorkUrl(options.work, title);
+    } else if(options.draft) {
+      this.openDraft(options.draft, title);
     }
+  },
+  // 打开工作表单 草稿
+  openDraft: function(draft, title = '') {
+    var url = api.workDraftUrl(draft);
+    var who = wx.getStorageSync('who');
+    var token = ''
+    if (who && who.token) {
+      token = who.token;
+      url = url + '&x-token=' + token;
+    }
+    url = url + '#wechat_redirect';
+    console.log('草稿页面 url', url);
+    this.setData({
+      workUrl: url,
+      navTitle: title
+    });
   },
   // 打开工作表单 未完成的工作
   openWorkUrl: function(work, title = '') {

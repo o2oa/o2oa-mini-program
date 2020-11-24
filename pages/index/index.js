@@ -138,6 +138,16 @@ Page({
     })
   },
 
+  /**
+   * 新建工作
+   * @param event 
+   */
+  bindTapAddProcess: function(event) {
+    wx.navigateTo({
+      url: '../progress/start-work'
+    });
+  },
+
   //点击滚动图片
   bindTapHotNews: function(event) {
     let index = event.currentTarget.dataset.index;

@@ -1,5 +1,9 @@
 <!--index.wxml-->
 <o2-navi title="首页" ></o2-navi>
+<!-- 新建工作按钮 -->
+<view class="process-add" bindtap="bindTapAddProcess">
+  <image src="../../assets/img/icon_index_add.png" mode="scaleToFill" class="process-add-img" />
+</view>
 <!--热点图片新闻-->
 <view class="top"  wx:if="{{bannerList.length > 0}}">
   <swiper class="banner" autoplay="true" interval="3000" duration="500" bindchange="swiperChange">

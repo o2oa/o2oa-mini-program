@@ -1,4 +1,16 @@
 /**index.wxss**/
+.process-add {
+  width: 84rpx;
+  height: 84rpx;
+  position: fixed;
+  top: 24rpx;
+  right: 24rpx;
+  z-index: 999;
+}
+.process-add-img {
+  width: 84rpx;
+  height: 84rpx;
+}
 .top {
   position: relative;
 }
