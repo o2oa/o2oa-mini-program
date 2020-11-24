@@ -7,6 +7,8 @@ let setDistribute = (distribute) => o2Request.setDistribute(distribute);
 let cmsWebUrl = (id) => o2Request.getO2WebBaseUrl() + '/x_desktop/cmsdocMobile.html?id=' + id;
 // 未完成的工作表单打开地址
 let workWebUrl = (work) => o2Request.getO2WebBaseUrl() + '/x_desktop/workmobilewithaction.html?workid=' + work;
+// 草稿 工作地址
+let workDraftUrl = (draft) => o2Request.getO2WebBaseUrl + '/x_desktop/workmobilewithaction.html?draft=' + draft;
 //工作表单打开地址 已结束 
 let workCompletedWebUrl = (workcompletedid) => o2Request.getO2WebBaseUrl() + '/x_desktop/workmobilewithaction.html?workcompletedid=' + workcompletedid;
 //论坛帖子打开地址 subjectId：帖子id page：评论页码
@@ -36,8 +38,14 @@ let cmsAttachementUrl = (attId) => o2Request.o2oaCmsServiceBaseUrl() + '/jaxrs/f
 
 /////////////////////流程 //////////////////////////////
 
-//流程应用
+// 流程应用
 let applicationList = () => o2Request.get(o2Request.o2oaProcessServiceBaseUrl() + '/jaxrs/application/list/complex');
+// 获取当前用户在指定流程中可启动流程的身份.
+let listAvailableIdentityWithProcess = (processId) => o2Request.get(o2Request.o2oaProcessServiceBaseUrl() + '/jaxrs/process/list/available/identity/process/'+processId);
+// 启动草稿
+let createDraft = (processId, body) => o2Request.post(o2Request.o2oaProcessServiceBaseUrl() + '/jaxrs/draft/process/'+processId, body);
+// 启动流程
+let createWork = (processId, body) => o2Request.post(o2Request.o2oaProcessServiceBaseUrl() + '/jaxrs/work/process/'+processId, body);
 
 // 待办列表
 let taskList = (lastId, pageSize) => o2Request.get(o2Request.o2oaProcessServiceBaseUrl() + '/jaxrs/task/list/'+lastId+'/next/'+pageSize);
@@ -91,6 +99,7 @@ module.exports = {
   setDistribute,
   cmsWebUrl,
   workWebUrl,
+  workDraftUrl,
   workCompletedWebUrl,
   bbsWebUrl,
   workAttachmentUrl,
@@ -107,6 +116,9 @@ module.exports = {
   readList,
   readCompletedList,
   applicationList,
+  listAvailableIdentityWithProcess,
+  createDraft,
+  createWork,
   me,
   myAvatarUrl,
   uploadMyAvatarUrl,

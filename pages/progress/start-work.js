@@ -12,7 +12,11 @@ Page({
     navTitle: '创建工作',
     currentAppId: '',
     applicationList: [],
-    processList: []
+    processList: [],
+    currentProcess: null,
+    showChooseIdentityDialog: false,
+    identityList: [],
+    selectedIdentity: ''
   },
 
   /**
@@ -95,9 +99,85 @@ Page({
     })
   },
 
+  /**
+   * 选择身份
+   */
+  showChooseIdentityDialog: function(identityList){
+    this.setData({
+      showChooseIdentityDialog: true,
+      identityList: identityList
+    })
+  },
+
+  /**
+   * 启动流程实例
+   * @param {*} identityDn 
+   */
+  startProcess: function(identityDn) {
+    let body = {"identity": identityDn}
+    api.createWork(this.data.currentProcess.id, body).then(result => {
+      util.hideLoading()
+      let work = result[0].taskList[0].work
+      let activityName = result[0].taskList[0].activityName
+      if (work) {
+        wx.navigateBack({
+          delta: 1,
+          complete: function() {
+            wx.navigateTo({
+              url: '../progress/work-web?work='  +work + '&title=' + encodeURIComponent(activityName)
+            });
+          }
+        })
+      }
+    }).catch(err => {
+      util.hideLoading()
+      api.o2Error(err);
+    })
+  },
+
+  /**
+   * 启动草稿
+   * @param {*} identityDn 
+   */
+  startDraft: function(identityDn) {
+    let body = {"identity": identityDn}
+    api.createDraft(this.data.currentProcess.id, body).then(result => {
+      console.log(result)
+      console.log(result.work)
+      util.hideLoading()
+      if (result.work) {
+        let draft = JSON.stringify(result.work)
+        wx.navigateBack({
+          delta: 1,
+          complete: function() {
+            wx.navigateTo({
+              url: '../progress/work-web?draft=' + encodeURIComponent(draft)
+            });
+          }
+        })
+      }
+    }).catch(err => {
+      util.hideLoading()
+      api.o2Error(err);
+    })
+  },
+
+  /**
+   * 启动
+   * @param {*} identityDn 
+   */
+  start: function(identityDn) {
+    util.showLoading()
+    if(this.data.currentProcess && this.data.currentProcess.defaultStartMode && this.data.currentProcess.defaultStartMode === 'draft') {
+      this.startDraft(identityDn)
+    }else {
+      this.startProcess(identityDn)
+    }
+  },
+
   bindTapApplication: function(e) {
-    let index = e.currentTarget.dataset.index;
-    let app = this.data.applicationList[index];
+    let index = e.currentTarget.dataset.index
+    let app = this.data.applicationList[index]
     this.setData({
       processList: app.processList,
       currentAppId: app.id
@@ -105,6 +185,36 @@ Page({
   },
 
   bindTapProcess: function(e) {
-    
+    let index = e.currentTarget.dataset.index
+    let process = this.data.processList[index]
+    this.data.currentProcess = process
+    util.showLoading()
+    api.listAvailableIdentityWithProcess(process.id).then(list => {
+      if (list && list.length > 0) {
+        if (list.length > 1) {
+          this.showChooseIdentityDialog(list)
+        }else {
+          this.start(list[0].distinguishedName)
+        }
+      } else {
+        util.toast('没有获取到当前用户的身份，无法启动流程！')
+      }
+    }).catch(err => {
+      util.hideLoading()
+      api.o2Error(err);
+    })
+  },
+
+  tapDialogButton: function(e) {
+    this.setData({
+      showChooseIdentityDialog: false
+    });
+    if (e.detail.index == 1) {
+      this.start(this.data.selectedIdentity)
+    }
+  },
+
+  identityRadioChange: function(e) {
+    this.data.selectedIdentity = e.detail.value
   }
 })

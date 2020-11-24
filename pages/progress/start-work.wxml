@@ -15,3 +15,20 @@
   </view>
   
 </block>
+
+<mp-dialog title="请选择启动流程的身份" show="{{showChooseIdentityDialog}}" bindbuttontap="tapDialogButton" buttons="{{[{text: '取消'}, {text: '确认'}]}}">
+      <view class="page-section">
+        <view class="weui-cells weui-cells_after-title">
+          <view class="weui-cell weui-cell_input">
+            <radio-group bindchange="identityRadioChange">
+              <label class="weui-cell weui-check__label" wx:for="{{identityList}}" wx:key="{{item.id}}">
+                <view class="weui-cell__hd">
+                  <radio value="{{item.distinguishedName}}"/>
+                </view>
+                <view class="weui-cell__bd">{{item.name}}({{item.unitName}})</view>
+              </label>
+            </radio-group>
+          </view>
+        </view>
+      </view>
+</mp-dialog>
