@@ -1,0 +1,43 @@
+/* pages/progress/start-work.wxss */
+
+.application-list {
+  width: 50%;
+  height: 100vh;
+  overflow: scroll;
+  float: left;
+  background-color: #fbfbfb;
+}
+.application-item {
+  height: 84rpx;
+  margin-left: 24rpx;
+  border-bottom: 1px solid #ffffff;
+}
+.application-item-active {
+  background-color: #ffffff;
+}
+.application-icon {
+  width: 64rpx;
+  height: 64rpx;
+  margin-top: 10rpx;
+  float: left;
+}
+.application-name {
+  line-height: 84rpx;
+  font-size: 24rpx;
+  margin-left: 12rpx;
+}
+.process-list {
+  width: 50%;
+  height: 100vh;
+  overflow: scroll;
+  float: left;
+  background-color: white;
+}
+.process-item {
+  height: 84rpx;
+  margin-left: 24rpx;
+}
+.process-name {
+  line-height: 84rpx;
+  font-size: 20rpx;
+}

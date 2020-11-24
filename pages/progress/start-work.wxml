@@ -1,0 +1,17 @@
+<!--pages/progress/start-work.wxml-->
+<o2-navi title="{{navTitle}}" ></o2-navi>
+
+<block>
+  <view class="application-list">
+    <view class="application-item {{currentAppId == item.id ? 'application-item-active': ''}}" wx:for="{{applicationList}}" wx:key="index" bindtap="bindTapApplication" data-index="{{index}}"  >
+      <image class="application-icon" src="{{item.icon ? 'data:image/png;base64,'+item.icon : '../../assets/img/icon_main_index_logo.png'}}" mode="scaleToFill"  />
+      <text class="application-name">{{item.name}}</text>
+    </view>
+  </view>
+  <view class="process-list">
+    <view class="process-item" wx:for="{{processList}}" wx:key="index" bindtap="bindTapProcess" data-index="{{index}}"  >
+      <text class="process-name">{{item.name}}</text>
+    </view>
+  </view>
+  
+</block>

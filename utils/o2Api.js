@@ -36,6 +36,9 @@ let cmsAttachementUrl = (attId) => o2Request.o2oaCmsServiceBaseUrl() + '/jaxrs/f
 
 /////////////////////流程 //////////////////////////////
 
+//流程应用
+let applicationList = () => o2Request.get(o2Request.o2oaProcessServiceBaseUrl() + '/jaxrs/application/list/complex');
+
 // 待办列表
 let taskList = (lastId, pageSize) => o2Request.get(o2Request.o2oaProcessServiceBaseUrl() + '/jaxrs/task/list/'+lastId+'/next/'+pageSize);
 //已办列表
@@ -103,6 +106,7 @@ module.exports = {
   taskCompletedList,
   readList,
   readCompletedList,
+  applicationList,
   me,
   myAvatarUrl,
   uploadMyAvatarUrl,
