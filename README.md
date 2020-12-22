@@ -4,7 +4,7 @@ O2OA微信小程序是**O2OA**企业信息化系统的微信小程序端实现�
 
 目前这个小程序连接的是我们O2OA的样例服务器，可以直接扫码体验：
 
-![o2oa小程序](http://www.o2oa.net/imagex/experience/pic_xiaochengxu_o2oa@1.5x.png)
+![o2oa小程序](./res/pic_xiaochengxu_o2oa@1.5x.png)
 
 ## 小程序源码使用
 1. 首先需要自行申请一个微信小程序，同时这个微信小程序需要通过微信认证，个人小程序无法使用小程序的高级API，很多功能无法使用。
