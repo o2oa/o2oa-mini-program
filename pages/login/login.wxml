@@ -8,7 +8,7 @@
   <view class="weui-btn-area" wx:for="{{registerEnable}}">
       <text class="register-btn" bindtap="toRegister">注册</text>
   </view>
-  <view class="weui-btn-area">
+  <view class="experience-area">
       <text >体验账号：</text>
       <text class="demo-people-link" bindtap="demoLogin" data-no="1">开发人员1</text>
       <text class="demo-people-link" bindtap="demoLogin" data-no="2">办公室机要</text>

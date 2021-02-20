@@ -55,7 +55,9 @@ input {
 .hover{
    background-color: #fb4747;
 }
-
+.experience-area {
+  margin-top: 20rpx;
+}
 
 .zixun{
   width: 55px;
