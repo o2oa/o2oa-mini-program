@@ -58,3 +58,6 @@
     <text class="title">{{item.title}}</text>
   </view>
 </block>
+
+<view class="zixun" ><contact-button type="default-dark" size="100" class="kf"></contact-button></view>
+<view class="zixun_text">联系我们</view>

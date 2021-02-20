@@ -9,7 +9,7 @@
 }
 .application-item {
   height: 84rpx;
-  margin-left: 24rpx;
+  padding-left: 24rpx;
   border-bottom: 1px solid #ffffff;
 }
 .application-item-active {

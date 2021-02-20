@@ -143,3 +143,36 @@
   padding: 2rpx 5rpx;
   margin-left: 10rpx;
 }
+
+
+.zixun{
+  width: 55px;
+  height: 55px;
+  position: fixed;
+  bottom: 35px;
+  right: 35px;
+  border-radius: 50%;
+  box-shadow: 0 0 5px #ddd;
+  text-align: center;
+  font-size: 14px;
+  color: #333;
+  background: url(https://sample.o2oa.net/contact_us.png) center center no-repeat;
+}
+
+.zixun .kf{
+  position: relative;
+  top: 0px;
+  left: 0px;
+  margin:15px auto;
+  opacity: 0;
+}
+
+.zixun_text {
+  width: 85px;
+  height: 25px;
+  position: fixed;
+  bottom: 10px;
+  right: 20px;
+  font-size: 13px;
+  text-align: center;
+}
