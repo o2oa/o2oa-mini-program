@@ -126,17 +126,17 @@ Page({
     var param = {};
     if (no == '1') {
      param = {
-        credential: 'kf1',
+        credential: '开发部经理',
         password: 'o2'
       }
     } else if (no == '2') {
       param = {
-        credential:'办公室机要',
+        credential:'开发部员工2',
         password: 'o2'
       }
     } else if (no == '3') {
       param = {
-        credential:'办公室初核',
+        credential:'财务部员工1',
         password: 'o2'
       }
     } else if (no == '4') {

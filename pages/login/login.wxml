@@ -10,10 +10,10 @@
   </view>
   <view class="experience-area">
       <text >体验账号：</text>
-      <text class="demo-people-link" bindtap="demoLogin" data-no="1">开发人员1</text>
-      <text class="demo-people-link" bindtap="demoLogin" data-no="2">办公室机要</text>
-      <text class="demo-people-link" bindtap="demoLogin" data-no="3">办公室初核</text>
-      <text class="demo-people-link" bindtap="demoLogin" data-no="4">办公室主任</text>
+      <text class="demo-people-link" bindtap="demoLogin" data-no="1">开发部经理</text>
+      <text class="demo-people-link" bindtap="demoLogin" data-no="2">开发部员工2</text>
+      <text class="demo-people-link" bindtap="demoLogin" data-no="3">财务部员工1</text>
+      <!-- <text class="demo-people-link" bindtap="demoLogin" data-no="4">办公室主任</text> -->
   </view>
 </view>
 
