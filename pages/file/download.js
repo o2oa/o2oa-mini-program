@@ -73,15 +73,17 @@ Page({
         if (res.statusCode === 200) {
           console.log(res)
           var filePath = res.tempFilePath
-          // 打开这个文件
-          wx.openDocument({
-            filePath: filePath,
-            success: function (res) {
-              console.log('打开文档成功')
-            }
-          });
           wx.navigateBack({
             delta: 1,
+            success: function() {
+              // 打开这个文件
+              wx.openDocument({
+                filePath: filePath,
+                success: function (res) {
+                  console.log('打开文档成功')
+                }
+              });
+            }
           });
         } else {
           util.hideLoading();
