@@ -50,6 +50,7 @@ input {
 .demo-people-link {
   color: #00c0fa;
   text-decoration: underline;
+  margin-top: 10rpx;
   display: block;
 }
 .hover{
