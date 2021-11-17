@@ -60,6 +60,7 @@ Page({
   //下载文件
   downloadFileAndOpen: function (url) {
     var who = wx.getStorageSync('who');
+    var tokenName = wx.getStorageSync('tokenName');
     var token = '';
     if (who && who.token) {
       token = who.token;
@@ -67,7 +68,7 @@ Page({
     wx.downloadFile({
       url: url,
       header: {
-        'x-token': token
+        tokenName: token
       },
       success(res) {
         if (res.statusCode === 200) {

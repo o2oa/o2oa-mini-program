@@ -37,10 +37,11 @@ Page({
   openDraft: function(draft, title = '') {
     var url = api.workDraftUrl(draft);
     var who = wx.getStorageSync('who');
+    var tokenName = wx.getStorageSync('tokenName');
     var token = ''
     if (who && who.token) {
       token = who.token;
-      url = url + '&x-token=' + token;
+      url = url + '&'+tokenName+'=' + token;
     }
     url = url + '#wechat_redirect';
     console.log('草稿页面 url', url);
@@ -53,10 +54,11 @@ Page({
   openWorkUrl: function(work, title = '') {
     var url = api.workWebUrl(work);
     var who = wx.getStorageSync('who');
+    var tokenName = wx.getStorageSync('tokenName');
     var token = ''
     if (who && who.token) {
       token = who.token;
-      url = url + '&x-token=' + token;
+      url = url + '&'+tokenName+'=' + token;
     }
     url = url + '#wechat_redirect';
     console.log('待办页面 url', url);
@@ -69,10 +71,11 @@ Page({
   openWorkCompletedUrl: function(workcompletedid, title = '') {
     var url = api.workCompletedWebUrl(workcompletedid);
     var who = wx.getStorageSync('who');
+    var tokenName = wx.getStorageSync('tokenName');
     var token = ''
     if (who && who.token) {
       token = who.token;
-      url = url + '&x-token=' + token;
+      url = url + '&'+tokenName+'=' + token;
     }
     url = url + '#wechat_redirect';
     console.log('待办页面 url', url);

@@ -59,6 +59,7 @@ Page({
       const tempFilePath = obj.url;
       console.log('裁剪完成，，', tempFilePath);
       var who = wx.getStorageSync('who');
+      var tokenName = wx.getStorageSync('tokenName');
       var token = '';
       if (who && who.token) {
         token = who.token;
@@ -72,7 +73,7 @@ Page({
       {
         method: 'PUT', 
         header: {
-        'x-token': token
+          tokenName: token
       }}).then(res => {
         const data = res.data
         console.log('上传头像完成', data);

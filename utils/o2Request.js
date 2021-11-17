@@ -58,10 +58,13 @@ function request(method, url, param, isShowLoading) {
 function setDistribute(distribute) {
   wx.removeStorageSync('webServer');
   wx.removeStorageSync('assembles');
+  wx.removeStorageSync('tokenName');
   var webServer = distribute.webServer || {}
   wx.setStorageSync('webServer', webServer);
   var assembles = distribute.assembles || {}
   wx.setStorageSync('assembles', assembles);
+  var tokenName = distribute.tokenName || 'x-token'
+  wx.setStorageSync('tokenName', tokenName);
 }
 
 // 获取模块的baseUrl

@@ -23,10 +23,11 @@ Page({
     if (id && id != '') {
       var url = api.cmsWebUrl(id);
       var who = wx.getStorageSync('who');
+      var tokenName = wx.getStorageSync('tokenName');
       var token = ''
       if (who && who.token) {
         token = who.token;
-        url = url + '&x-token=' + token;
+        url = url + '&'+tokenName+'=' + token;
       }
       url = url + '#wechat_redirect';
       console.log('信息页码 url', url);
