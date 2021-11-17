@@ -131,12 +131,12 @@ Page({
       }
     } else if (no == '2') {
       param = {
-        credential:'开发部员工2',
+        credential:'开发部员工1',
         password: 'o2'
       }
     } else if (no == '3') {
       param = {
-        credential:'财务部员工1',
+        credential:'公司领导1',
         password: 'o2'
       }
     } else if (no == '4') {
