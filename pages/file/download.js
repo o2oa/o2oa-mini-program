@@ -65,12 +65,15 @@ Page({
     if (who && who.token) {
       token = who.token;
     }
+    let header =  {}
+    header[tokenName] = token
+    console.log("url ", url)
+    console.log(header)
     wx.downloadFile({
       url: url,
-      header: {
-        tokenName: token
-      },
+      header: header,
       success(res) {
+        console.log(res)
         if (res.statusCode === 200) {
           console.log(res)
           var filePath = res.tempFilePath
@@ -87,6 +90,7 @@ Page({
             }
           });
         } else {
+          console.log("下载失败。。。。。");
           util.hideLoading();
           util.toast('下载失败！');
           wx.navigateBack({
@@ -95,6 +99,7 @@ Page({
         }
       },
       fail(res) {
+        console.log(res);
         util.hideLoading();
         util.toast('下载失败！');
         wx.navigateBack({
