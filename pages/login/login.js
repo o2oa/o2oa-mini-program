@@ -120,6 +120,13 @@ Page({
       url: './register',
     })
   },
+  // 长按扫码
+  openMPWxImage: function() {
+    wx.previewImage({
+      current: 'https://www.o2oa.net/imagex/experience/zoneland_mpweixin.jpg',
+      urls: ['https://www.o2oa.net/imagex/experience/zoneland_mpweixin.jpg'],
+    })
+  },
   // 体验账号登录
   demoLogin: function(event) {
     let no = event.currentTarget.dataset.no;

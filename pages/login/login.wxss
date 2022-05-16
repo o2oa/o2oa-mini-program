@@ -58,8 +58,15 @@ input {
 }
 .experience-area {
   margin-top: 20rpx;
+  font-size: 14px;
+  display: flex;
+  flex-direction: column;
 }
-
+.mpwx-img{
+	width: 300rpx;
+  height: 300rpx;
+  margin: 20rpx auto;
+}
 .zixun{
   width: 55px;
   height: 55px;

@@ -5,15 +5,13 @@
   <input class="{{passwordFocus?'input-active':''}}" placeholder="密码" password="true" maxlength="20" bindfocus="passwordBindfocus" bindinput="inputPassword"></input>
   <view class="login" bindtap="login" hover-class="hover" hover-start-time="0" hover-stay-time="100">登录</view>
 
-  <view class="weui-btn-area" wx:for="{{registerEnable}}">
+  <view class="weui-btn-area" wx:if="{{registerEnable}}">
       <text class="register-btn" bindtap="toRegister">注册</text>
   </view>
   <view class="experience-area">
-      <text >体验账号：</text>
-      <!-- <text class="demo-people-link" bindtap="demoLogin" data-no="1">开发部经理</text> -->
-      <text class="demo-people-link" bindtap="demoLogin" data-no="2">开发部员工1</text>
-      <text class="demo-people-link" bindtap="demoLogin" data-no="3">公司领导1</text>
-      <!-- <text class="demo-people-link" bindtap="demoLogin" data-no="4">办公室主任</text> -->
+      <text >各位亲爱的小伙伴，获取试用的登陆账号和密码，请先关注官方微信公众号，即可推送。点击下图后，长按即可扫码关注！</text>
+      <image class="mpwx-img" src="https://www.o2oa.net/imagex/experience/zoneland_mpweixin.jpg" bindtap="openMPWxImage" bindlongpress="openMPWxImage"/>
+
   </view>
 </view>
 
