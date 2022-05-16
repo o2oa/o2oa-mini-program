@@ -56,15 +56,14 @@ function request(method, url, param, isShowLoading) {
 
 //设置应用地址到存储中
 function setDistribute(distribute) {
-  wx.removeStorageSync('webServer');
-  wx.removeStorageSync('assembles');
-  wx.removeStorageSync('tokenName');
-  var webServer = distribute.webServer || {}
-  wx.setStorageSync('webServer', webServer);
-  var assembles = distribute.assembles || {}
-  wx.setStorageSync('assembles', assembles);
-  var tokenName = distribute.tokenName || 'x-token'
-  wx.setStorageSync('tokenName', tokenName);
+  ['webServer', 'assembles', 'tokenName'].forEach( t => {
+    wx.removeStorageSync(t);
+    if (t === 'tokenName') {
+      wx.setStorageSync(t, distribute[t] || 'x-token');
+    } else {
+      ws.setStorageSync(t, distribute[t] || {});
+    }
+  });
 }
 
 // 获取模块的baseUrl

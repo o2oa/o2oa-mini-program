@@ -19,7 +19,6 @@ Page({
   onLoad: function (options) {
     var id = options.id;
     var title = decodeURIComponent(options.title);
-    console.log("进入 cms web页面， id:", id);
     if (id && id != '') {
       var url = api.cmsWebUrl(id);
       var who = wx.getStorageSync('who');
@@ -30,7 +29,6 @@ Page({
         url = url + '&'+tokenName+'=' + token;
       }
       url = url + '#wechat_redirect';
-      console.log('信息页码 url', url);
       this.setData({
         workUrl: url,
         navTitle: title

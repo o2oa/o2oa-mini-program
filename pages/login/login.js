@@ -16,7 +16,6 @@ Page({
   //连接中心服务器获取应用连接地址
   connectCenterServer: function() {
     api.centerServer().then(data => {
-      console.log('应用服务器信息', data);
       api.setDistribute(data);
       this.checkIsLogin();
     }).catch( err => {
@@ -31,7 +30,6 @@ Page({
       //检查是否过期
       api.who().then(data => {
         if(data.token && data.token != "") {
-          console.log('认证信息未过期，当前用户信息：', data);
           wx.setStorageSync('who', data);
           //跳转到首页
           wx.switchTab({
@@ -96,14 +94,12 @@ Page({
       util.toast("请输入密码！");
       return;
     }
-    let param = {
+    const param = {
       credential: this.data.name,
       password: this.data.password
     }
-    console.log(param);
     api.login(param)
       .then(data => {
-        console.log('登录成功', data);
         wx.setStorageSync('who', data);
         util.toast('登录成功~');
         //跳转到首页
@@ -130,31 +126,20 @@ Page({
   // 体验账号登录
   demoLogin: function(event) {
     let no = event.currentTarget.dataset.no;
-    var param = {};
+    const param = {
+      password: 'o2'
+    };
     if (no == '1') {
-     param = {
-        credential: '开发部经理',
-        password: 'o2'
-      }
+     param['credential'] = '开发部经理'
     } else if (no == '2') {
-      param = {
-        credential:'开发部员工1',
-        password: 'o2'
-      }
+      param['credential'] = '开发部员工1'
     } else if (no == '3') {
-      param = {
-        credential:'公司领导1',
-        password: 'o2'
-      }
+      param['credential'] = '公司领导1'
     } else if (no == '4') {
-      param = {
-        credential:'办公室主任',
-        password: 'o2'
-      }
+      param['credential'] = '办公室主任'
     }
     api.login(param)
       .then(data => {
-        console.log('登录成功', data);
         wx.setStorageSync('who', data);
         util.toast('登录成功~');
         //跳转到首页

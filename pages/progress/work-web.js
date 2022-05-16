@@ -33,18 +33,23 @@ Page({
       this.openDraft(options.draft, title);
     }
   },
-  // 打开工作表单 草稿
-  openDraft: function(draft, title = '') {
-    var url = api.workDraftUrl(draft);
-    var who = wx.getStorageSync('who');
-    var tokenName = wx.getStorageSync('tokenName');
-    var token = ''
+
+  // 生成url
+  _urlWithToken: function(url) {
+    let newUrl = url;
+    const who = wx.getStorageSync('who');
+    const tokenName = wx.getStorageSync('tokenName');
+    let token = ''
     if (who && who.token) {
       token = who.token;
-      url = url + '&'+tokenName+'=' + token;
+      newUrl = newUrl + '&'+tokenName+'=' + token;
     }
-    url = url + '#wechat_redirect';
-    console.log('草稿页面 url', url);
+    return newUrl + '#wechat_redirect';
+  },
+  // 打开工作表单 草稿
+  openDraft: function(draft, title = '') {
+    let url = api.workDraftUrl(draft);
+    url = this._urlWithToken(url);
     this.setData({
       workUrl: url,
       navTitle: title
@@ -52,16 +57,8 @@ Page({
   },
   // 打开工作表单 未完成的工作
   openWorkUrl: function(work, title = '') {
-    var url = api.workWebUrl(work);
-    var who = wx.getStorageSync('who');
-    var tokenName = wx.getStorageSync('tokenName');
-    var token = ''
-    if (who && who.token) {
-      token = who.token;
-      url = url + '&'+tokenName+'=' + token;
-    }
-    url = url + '#wechat_redirect';
-    console.log('待办页面 url', url);
+    let url = api.workWebUrl(work);
+    url = this._urlWithToken(url);
     this.setData({
       workUrl: url,
       navTitle: title
@@ -69,16 +66,8 @@ Page({
   },
   // 打开工作表单 已结束的工作
   openWorkCompletedUrl: function(workcompletedid, title = '') {
-    var url = api.workCompletedWebUrl(workcompletedid);
-    var who = wx.getStorageSync('who');
-    var tokenName = wx.getStorageSync('tokenName');
-    var token = ''
-    if (who && who.token) {
-      token = who.token;
-      url = url + '&'+tokenName+'=' + token;
-    }
-    url = url + '#wechat_redirect';
-    console.log('待办页面 url', url);
+    let url = api.workCompletedWebUrl(workcompletedid);
+    url = this._urlWithToken(url);
     this.setData({
       workUrl: url,
       navTitle: title
