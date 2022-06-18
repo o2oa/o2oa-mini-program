@@ -31,15 +31,29 @@ Page({
   onShow: function() {
     this.loadArticleList(true);
   },
+  // 滚动图片数据请求
   loadHotNews: function() {
     api.hotPicList().then(list => {
       console.log(list);
+      // url前端拼接
+      let newList = [];
+      for (let i = 0; i < list.length; i++) {
+        let element = list[i];
+        console.log(element);
+        element.newUrl = this.hotPicUrl(element.picId);
+        newList.push(element);
+      }
+      console.log(newList);
       this.setData({
-        bannerList: list
+        bannerList: newList
       })
     }).catch(err => {
       api.o2Error(err)
     })
+  },
+  // 滚动图片url拼接
+  hotPicUrl: function(picId) {
+    return api.hotPicUrl(picId)
   },
   loadArticleList: function(isRefresh) {
     if (this.data.currentTab == 'news') {

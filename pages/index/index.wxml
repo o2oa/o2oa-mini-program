@@ -9,7 +9,7 @@
   <swiper class="banner" autoplay="true" interval="3000" duration="500" bindchange="swiperChange">
     <swiper-item wx:for="{{bannerList}}" wx:key="index">
       <view class="banner" bindtap="bindTapHotNews" data-index="{{index}}" data-info="{{item.infoId}}" data-application="{{item.application}}">
-        <image mode="scaleToFill" src="{{item.url}}"></image>
+        <image mode="scaleToFill" src="{{item.newUrl}}"></image>
         <view class="title">{{item.title}}</view>
       </view>
     </swiper-item>

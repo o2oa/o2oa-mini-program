@@ -30,11 +30,13 @@ let logout = () => o2Request.delete(o2Request.o2oaOrganizationAuthenticationBase
 
 //热点图片列表 默认取前5条
 let hotPicList = () => o2Request.put(o2Request.o2oaHotPicServiceBaseUrl() + '/jaxrs/user/hotpic/filter/list/page/1/count/5', {}, false);
+// 热电图片url地址
+let hotPicUrl = (picId) => o2Request.o2oaFileServiceBaseUrl() + '/jaxrs/file/'+picId+'/download/stream';
+
 //cms 分页获取文档列表
 let cmsDocumentFilterList = (lastId, pageSize, param) => o2Request.put(o2Request.o2oaCmsServiceBaseUrl() + '/jaxrs/document/filter/list/'+lastId+'/next/'+pageSize, param);
 //cms 附件下载地址
 let cmsAttachementUrl = (attId) => o2Request.o2oaCmsServiceBaseUrl() + '/jaxrs/fileinfo/download/document/'+attId;
-
 
 /////////////////////流程 //////////////////////////////
 
@@ -110,6 +112,7 @@ module.exports = {
   login,
   logout,
   hotPicList,
+  hotPicUrl,
   cmsDocumentFilterList,
   taskList,
   taskCompletedList,

@@ -25,7 +25,7 @@ function request(method, url, param, isShowLoading) {
             data: res.header['Set-Cookie'],
           })
         }
-        console.log('接口：' + url, ' 参数：', param, '\n返回值：', res.data)
+        // console.log('接口：' + url, ' 参数：', param, '\n返回值：', res.data)
         if (isShowLoading) {
           wx.hideLoading();
         }
@@ -61,7 +61,7 @@ function setDistribute(distribute) {
     if (t === 'tokenName') {
       wx.setStorageSync(t, distribute[t] || 'x-token');
     } else {
-      ws.setStorageSync(t, distribute[t] || {});
+      wx.setStorageSync(t, distribute[t] || {});
     }
   });
 }
