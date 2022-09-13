@@ -29,7 +29,7 @@ App({
     o2oa: {
       centerHost: "sample.o2oa.net",
       centerContext: "/x_program_center",
-      centerPort: 40030,
+      centerPort: 443,
       httpProtocol: "https"
     },
     naviInfo: {
