@@ -24,6 +24,8 @@ let who = () => o2Request.get(o2Request.o2oaOrganizationAuthenticationBaseUrl() 
 let login = (param) => o2Request.post(o2Request.o2oaOrganizationAuthenticationBaseUrl() + '/jaxrs/authentication', param);
 //登出
 let logout = () => o2Request.delete(o2Request.o2oaOrganizationAuthenticationBaseUrl() + '/jaxrs/authentication');
+// 获取 rsa publish key
+let rsaPublishKey =()=> o2Request.get(o2Request.o2oaOrganizationAuthenticationBaseUrl() + '/jaxrs/authentication/captchaRSAPublicKey');
 
 
 //////////////////////////cms 信息中心//////////////////////////////
@@ -111,6 +113,7 @@ module.exports = {
   who,
   login,
   logout,
+  rsaPublishKey,
   hotPicList,
   hotPicUrl,
   cmsDocumentFilterList,

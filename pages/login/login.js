@@ -1,5 +1,6 @@
 let util = require('../../utils/util.js')
 const api = require('../../utils/o2Api.js');
+const encrypt = require('../../utils/jsencrypt.js');
 
 Page({
   data: {
@@ -8,7 +9,11 @@ Page({
     password: '',
     nameFocus: true,
     passwordFocus: false,
-    registerEnable: false
+    registerEnable: false,
+    rsa : {
+      rsaEnable: false,
+      publicKey: ''
+    }
   },
   onLoad: function () {
     this.connectCenterServer();
@@ -18,8 +23,9 @@ Page({
     api.centerServer().then(data => {
       api.setDistribute(data);
       this.checkIsLogin();
+      this.loadLoginRSAInfo();
     }).catch( err => {
-      console.log('连接中心服务器失败', err);
+      console.error('连接中心服务器失败', err);
       util.toast('连不上O2OA服务器，请检查网络！');
     });
   },
@@ -55,6 +61,23 @@ Page({
        });
     }
   },
+  // 获取 RSA 加密公开密钥
+  loadLoginRSAInfo: function() {
+    api.rsaPublishKey().then(data => {
+      console.debug(data);
+      if (data.rsaEnable && data.rsaEnable === true) {
+        let rsa = {
+          rsaEnable: true,
+          publicKey: data.publicKey
+        };
+        this.setData({
+          rsa: rsa
+         });
+      }
+    }).catch(err => {
+      console.error(err);
+    });
+  },
   checkRegisterMode: function() {
     api.registerMode().then(res => {
       if (res.value == 'code' ) {
@@ -64,7 +87,6 @@ Page({
       }
     })
   },
-
   inputName: function(event) {
     this.data.name = event.detail.value;
   },
@@ -94,9 +116,17 @@ Page({
       util.toast("请输入密码！");
       return;
     }
-    const param = {
+    let param = {
       credential: this.data.name,
       password: this.data.password
+    }
+    if (this.data.rsa.rsaEnable === true) {
+      var et = new encrypt.JSEncrypt();
+      et.setPublicKey("-----BEGIN PUBLIC KEY-----"+this.data.rsa.publicKey+"-----END PUBLIC KEY-----");
+      param.password = et.encrypt(param.password);
+      param.isEncrypted = "y";
+    } else {
+      param.isEncrypted = 'n';
     }
     api.login(param)
       .then(data => {
