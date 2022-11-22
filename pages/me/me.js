@@ -9,23 +9,26 @@ Page({
     showLogoutDialog: false,
     dialogLabel: '',
     dialogValue: '',
+    dialogPlaceholder: '',
     dialogParam: '',
     avatarUrl: '',
     person: {}
   },
   onLoad: function () {
-    
-    //获取用户信息
-     api.me().then(info => {
-       this.setData({
-         person: info
-       });
-     }).catch(err => {
-       api.o2Error(err);
-     })
+    this.loadPersonInfo();
   },
   onShow: function() {
     this.avatar();  
+  },
+  loadPersonInfo: function() {
+    //获取用户信息
+    api.me().then(info => {
+      this.setData({
+        person: info
+      });
+    }).catch(err => {
+      api.o2Error(err);
+    });
   },
   //获取头像文件
   avatar: function() {
@@ -80,24 +83,32 @@ Page({
   bindTapLine: function(event) {
     console.log(event);
     let param = event.currentTarget.dataset.param;
+    let value = '';
+    let placeholder = '';
+    let label = '';
     if (!param) {
       return;
     } else if (param == 'mail') {
-      var value = this.data.person.mail;
-      var label = '邮件地址';
+      value = this.data.person.mail;
+      label = '邮件地址';
+      placeholder = '请输入邮件地址';
     } else if (param == 'mobile') {
-      var value = this.data.person.mobile;
-      var label = '手机号码';
+       value = this.data.person.mobile;
+       label = '手机号码';
+       placeholder = '请输入手机号码';
     } else if (param == 'officePhone') {
-      var value = this.data.person.officePhone;
-      var label = '办公电话';
+       value = this.data.person.officePhone;
+       label = '办公电话';
+      placeholder = '请输入办公电话';
     } else if (param == 'signature') {
-      var value = this.data.person.signature;
-      var label = '个人签名';
+       value = this.data.person.signature;
+       label = '个人签名';
+      placeholder = '请输入个人签名';
     }
     this.setData({
       showDialog: true,
       dialogLabel: label,
+      dialogPlaceholder: placeholder,
       dialogValue: value,
       dialogParam:  param
     });
@@ -117,7 +128,7 @@ Page({
       dialogParam:  ''
     });
     if (event.detail.index == 1) {
-      var person = this.data.person;
+      const person =  JSON.parse(JSON.stringify(this.data.person));//Object.clone(this.data.person);
       if (!value ) {
         var value = ''
       }
@@ -144,6 +155,7 @@ Page({
       util.toast('更新成功！');
     }).catch(err => {
       o2Api.o2Error(err);
+      //this.loadPersonInfo();
     })
   },
   tapDialogLogoutButton: function(event) {
