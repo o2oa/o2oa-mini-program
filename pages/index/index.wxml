@@ -16,10 +16,6 @@
   </swiper>
   <text class="indicator">{{swiperIndex+1}}/{{bannerList.length}}</text>
 </view>
-<!--没有热点新闻的默认图片-->
-<view class="top" wx:if="{{bannerList.length == 0}}" >
-  <image src="../../assets/img/banner_default.png" mode="scaleToFill" class="banner-default-img"></image>
-</view>
 <!--应用列表-->
 <view class="app-list" >
   <view class="item" bindtap="bindTapTaskList">

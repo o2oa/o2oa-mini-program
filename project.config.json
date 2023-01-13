@@ -52,7 +52,16 @@
   },
   "libVersion": "2.24.5",
   "packOptions": {
-    "ignore": [],
+    "ignore": [
+      {
+        "value": "res",
+        "type": "folder"
+      },
+      {
+        "value": "README.md",
+        "type": "file"
+      }
+    ],
     "include": []
   }
 }
