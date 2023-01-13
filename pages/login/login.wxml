@@ -14,7 +14,7 @@
 
   </view> -->
   <view class="experience-area" bindtap="getDemoAccounts">
-      <text >点击获取体验账号</text>
+      <text style="margin: 20rpx;">点击获取体验账号</text>
   </view>
 </view>
 
