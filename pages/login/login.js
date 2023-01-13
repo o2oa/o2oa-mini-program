@@ -153,6 +153,51 @@ Page({
       urls: ['https://www.o2oa.net/imagex/experience/zoneland_mpweixin.jpg'],
     })
   },
+  // 获取体验账号
+  getDemoAccounts: function() {
+    wx.hideKeyboard();
+    api.wwwGetSampleServerAccounts('sample')
+    .then(data => {
+      console.log(data);
+      if (data.value) {
+        var list = [];
+        if (data.value.password) {
+          this.data.samplePassword = data.value.password;
+        }
+        if (data.value.accountList) {
+          this.data.accountList = data.value.accountList;
+          for (let index = 0; index < this.data.accountList.length; index++) {
+            const element = this.data.accountList[index];
+            list.push(element.name+': '+element.account);
+          }
+        }
+        if (list.length > 0) {
+          wx.showActionSheet({
+            itemList: list,
+            success: (res)=> {
+              console.log(res.tapIndex)
+              let account = this.data.accountList[res.tapIndex];
+              console.log(account);
+              this.setData({
+                name: account.account,
+                password: this.data.samplePassword
+              });
+            },
+            fail: (res)=> {
+              console.log(res.errMsg)
+            }
+          }); 
+        } else {
+          util.toast('连不上O2OA服务器，请检查网络！');
+        }
+      } else {
+        util.toast('连不上O2OA服务器，请检查网络！');
+      }
+    }).catch(err => {
+      console.error(err);
+      api.o2Error(err, '获取账号失败，请到O2OA官网查询！');
+    });
+  },
   // 体验账号登录
   demoLogin: function(event) {
     let no = event.currentTarget.dataset.no;

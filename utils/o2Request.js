@@ -20,10 +20,11 @@ function request(method, url, param, isShowLoading) {
       success: function(res) {
         // 保存登录返回的cookie
         if (res.header['Set-Cookie']) {
-          wx.setStorage({
-            key: 'cookie',
-            data: res.header['Set-Cookie'],
-          })
+          wx.setStorageSync('cookie', res.header['Set-Cookie']);
+          // wx.setStorage({
+          //   key: 'cookie',
+          //   data: res.header['Set-Cookie'],
+          // })
         }
         // console.log('接口：' + url, ' 参数：', param, '\n返回值：', res.data)
         if (isShowLoading) {
@@ -82,6 +83,11 @@ function getO2WebBaseUrl() {
 // 中心服务器获取
 function o2oaCenterUrl() {
   return  app.globalData.o2oa.httpProtocol + "://" + app.globalData.o2oa.centerHost + ":" + app.globalData.o2oa.centerPort + app.globalData.o2oa.centerContext + "/jaxrs/distribute/webserver/assemble/source/" + app.globalData.o2oa.centerHost;
+}
+
+// 获取演示服务器账号列表
+function wwwGetSampleServerAccountsUrl() {
+  return "https://www.o2oa.net/oa/x_program_center/jaxrs/invoke/demo_app_get_login_accounts/execute";
 }
 
 //认证模块
@@ -147,5 +153,6 @@ module.exports = {
   o2oaFileServiceBaseUrl: o2oaFileServiceBaseUrl,
   o2oaProcessServiceBaseUrl: o2oaProcessServiceBaseUrl,
   o2oaBBSServiceBaseUrl: o2oaBBSServiceBaseUrl,
-  o2oaPersonalServiceBaseUrl: o2oaPersonalServiceBaseUrl
+  o2oaPersonalServiceBaseUrl: o2oaPersonalServiceBaseUrl,
+  wwwGetSampleServerAccountsUrl: wwwGetSampleServerAccountsUrl
 }

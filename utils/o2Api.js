@@ -87,6 +87,10 @@ let register = (form) => o2Request.post(o2Request.o2oaPersonalServiceBaseUrl() +
 let registerMode = () => o2Request.get(o2Request.o2oaPersonalServiceBaseUrl() + '/jaxrs/regist/mode');
 
 
+// 官网查询账号列表
+let wwwGetSampleServerAccounts = (id) => o2Request.post(o2Request.wwwGetSampleServerAccountsUrl(), {serverId: id});
+
+
 
 // 处理o2请求返回错误
 function o2Error(err, optionsMessage = '请求失败') {
@@ -131,5 +135,6 @@ module.exports = {
   putMyInfo,
   sendSms,
   register,
-  registerMode
+  registerMode,
+  wwwGetSampleServerAccounts
 }
