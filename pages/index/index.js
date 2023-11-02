@@ -11,6 +11,7 @@ Page({
     bannerList:[],
     swiperIndex: 0,
     currentTab: 'news', //当前列表是信息中心还是办公中心： news | tasks
+    page: 1, // 分页查询
     lastId: firstId,
     //文章列表，信息中心和办公中心的数据
     /**
@@ -34,16 +35,13 @@ Page({
   // 滚动图片数据请求
   loadHotNews: function() {
     api.hotPicList().then(list => {
-      console.log(list);
       // url前端拼接
       let newList = [];
       for (let i = 0; i < list.length; i++) {
         let element = list[i];
-        console.log(element);
         element.newUrl = this.hotPicUrl(element.picId);
         newList.push(element);
       }
-      console.log(newList);
       this.setData({
         bannerList: newList
       })
@@ -106,14 +104,15 @@ Page({
   loadNews: function(isRefresh) {
     let param = {
       orderField: '',
-      statusList: ['published']
+      statusList: ['published'],
+      justData: true,
     };
-    var lastId = this.data.lastId;
     if (isRefresh) {
-      this.data.lastId = firstId;
-      lastId = firstId;
+      this.data.page = 1;
+    } else {
+      this.data.page++;
     }
-    api.cmsDocumentFilterList(lastId, defaultPageSize, param).then(list => {
+    api.cmsDocumentFilterListNew(this.data.page, defaultPageSize, param).then(list => {
       if (isRefresh) {
         this.data.articleList = [];
       }
@@ -130,10 +129,8 @@ Page({
           newList.push(obj);
         });
         this.data.articleList.push(...newList);
-        var lastId = list[list.length-1].id;
         this.setData({
           articleList: this.data.articleList,
-          lastId: lastId
         });
       }else {
         this.setData({

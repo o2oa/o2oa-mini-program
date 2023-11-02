@@ -8,7 +8,7 @@ let cmsWebUrl = (id) => o2Request.getO2WebBaseUrl() + '/x_desktop/cmsdocMobile.h
 // 未完成的工作表单打开地址
 let workWebUrl = (work) => o2Request.getO2WebBaseUrl() + '/x_desktop/workmobilewithaction.html?workid=' + work;
 // 草稿 工作地址
-let workDraftUrl = (draft) => o2Request.getO2WebBaseUrl + '/x_desktop/workmobilewithaction.html?draft=' + draft;
+let workDraftUrl = (draft) => o2Request.getO2WebBaseUrl() + '/x_desktop/workmobilewithaction.html?draft=' + draft;
 //工作表单打开地址 已结束 
 let workCompletedWebUrl = (workcompletedid) => o2Request.getO2WebBaseUrl() + '/x_desktop/workmobilewithaction.html?workcompletedid=' + workcompletedid;
 //论坛帖子打开地址 subjectId：帖子id page：评论页码
@@ -37,6 +37,7 @@ let hotPicUrl = (picId) => o2Request.o2oaFileServiceBaseUrl() + '/jaxrs/file/'+p
 
 //cms 分页获取文档列表
 let cmsDocumentFilterList = (lastId, pageSize, param) => o2Request.put(o2Request.o2oaCmsServiceBaseUrl() + '/jaxrs/document/filter/list/'+lastId+'/next/'+pageSize, param);
+let cmsDocumentFilterListNew = (page, pageSize, body) => o2Request.put(o2Request.o2oaCmsServiceBaseUrl() + '/jaxrs/document/filter/list/'+page+'/size/'+pageSize, body);
 //cms 附件下载地址
 let cmsAttachementUrl = (attId) => o2Request.o2oaCmsServiceBaseUrl() + '/jaxrs/fileinfo/download/document/'+attId;
 
@@ -121,6 +122,7 @@ module.exports = {
   hotPicList,
   hotPicUrl,
   cmsDocumentFilterList,
+  cmsDocumentFilterListNew,
   taskList,
   taskCompletedList,
   readList,
